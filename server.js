@@ -4,7 +4,7 @@ const logger = require('morgan');
 const port = process.env.PORT || 3001;
 
 require('dotenv').config();
-require('./jwt-auth-template/config/database');
+require('./config/database');
 
 const userRouter = require('./jwt-auth-template/routes/users');
 const cors = require('cors')
