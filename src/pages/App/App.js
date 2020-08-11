@@ -5,6 +5,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import LoginPage from '../LoginPage/LoginPage';
 import SignupPage from '../SignupPage/SignupPage';
 import userService from '../../services/userService';
+import StartTrip from '../../components/StartTrip/StartTrip'
+
 
 class App extends Component {
   state = {
@@ -39,6 +41,9 @@ class App extends Component {
             handleSignupOrLogin={this.handleSignupOrLogin}
           />
         }/>
+        <div className="ui container">
+        <StartTrip />
+        </div>
       </>
     );
   }
