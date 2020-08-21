@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./StartTrip.css";
 import Cities from '../../components/Cities'
+import SearchBar from '../SearchBar'
 
 
 const cities = [
@@ -32,13 +33,7 @@ export default class StartTrip extends Component {
   render() {
     return (
       <div>
-        <div className="ui form">
-          <div className="field">
-            <label>Search City</label>
-            <input value={this.state.term} onChange={this.onInputChange} className="input" type="text" />
-            <button className="ui green button">Search</button>
-          </div>
-        </div>
+        <SearchBar term={this.state.term} onInputChange={this.onInputChange}/>
         <Cities cities={cities}/>
       </div>
     );
