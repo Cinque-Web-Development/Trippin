@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
   avatar: String,
+  trips: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Trip'
+  }]
 }, {
   timestamps: true
 });

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const attractionSchema = new mongoose.Schema({
     name: String,
     time: Date,
-    type: String,
+    aType: String,
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Review',

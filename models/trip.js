@@ -5,12 +5,12 @@ const tripSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
+    start: Date,
+    end: Date,
     destinations: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Destination',
     }],
-    start: Date,
-    end: Date
 }, {
     timestamps:true
 });
