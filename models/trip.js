@@ -5,6 +5,7 @@ const tripSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
+    name: String,
     start: Date,
     end: Date,
     destinations: [{
