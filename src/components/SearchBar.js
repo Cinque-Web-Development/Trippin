@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const SearchBar = ({term, onInputChange, submitCitySearch}) => {
   return (
@@ -10,8 +10,9 @@ const SearchBar = ({term, onInputChange, submitCitySearch}) => {
             <button className="ui green button" type="submit">Search</button>
           </form>
         </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;
