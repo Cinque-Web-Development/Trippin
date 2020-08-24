@@ -7,17 +7,10 @@ import SignupPage from '../SignupPage/SignupPage';
 import userService from '../../services/userService';
 import StartTrip from '../../components/StartTrip/StartTrip'
 
-import {getCity} from "../../services/geoDBService.js"
-
 
 class App extends Component {
   state = {
     user: userService.getUser()
-  }
-
-  async componentDidMount() {
-    const city = await getCity()
-    console.log(city)
   }
 
   handleLogout = () => {

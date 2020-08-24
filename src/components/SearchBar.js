@@ -1,14 +1,14 @@
 import React from 'react';
 
-const SearchBar = ({term, onInputChange}) => {
+const SearchBar = ({term, onInputChange, submitCitySearch}) => {
   return (
     <div>
       <div className="ui form">
-          <div className="field">
+          <form className="field" onSubmit={submitCitySearch}>
             <label>Search City</label>
             <input value={term} onChange={onInputChange} className="input" type="text" />
-            <button className="ui green button">Search</button>
-          </div>
+            <button className="ui green button" type="submit">Search</button>
+          </form>
         </div>
     </div>
   )

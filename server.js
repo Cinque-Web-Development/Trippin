@@ -9,6 +9,7 @@ require('./config/database');
 const userRouter = require('./routes/users');
 const tripRouter = require('./routes/trips')
 const reviewRouter = require('./routes/reviews')
+const googlePlacesRouter = require('./routes/googlePlacesAPI');
 const cors = require('cors')
 
 
@@ -17,6 +18,7 @@ app.use(logger('dev'));
 app.use(express.json());
 
 app.use('/api/users', userRouter);
+app.use('/api/googleplaces', googlePlacesRouter);
 app.use('/trips', tripRouter);
 app.use('/reviews', reviewRouter);
 

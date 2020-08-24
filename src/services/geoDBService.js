@@ -1,14 +1,14 @@
-const BASE_URL = 'https://wft-geo-db.p.rapidapi.com'
+import tokenService from './tokenService';
+const BASE_URL = "/api/googleplaces";
 
-export function getCity() {
-    return fetch(`${BASE_URL}/v1/geo/cities`, {
-        method: "GET",
+export function getCity(term) {
+    return fetch(BASE_URL, {
+        method: "POST",
         headers: {
             'content-type': 'application/json',
-            "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
-            "x-rapidapi-key": "1a7724c5d7mshb90f93835c89bd3p17b638jsnc23f861df576"
-        }
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        },
+        body: JSON.stringify(term)
     }, {mode:'cors'})
-    .then(res => res.json())
-    .catch(err => err.json());
+    .then(res => res.json());
 }

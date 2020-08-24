@@ -2,22 +2,7 @@ import React, { Component } from "react";
 import "./StartTrip.css";
 import Cities from '../../components/Cities'
 import SearchBar from '../SearchBar'
-
-
-const cities = [
-  {
-    title: 'Austin',
-  },
-  {
-    title: 'Dallas'
-  },
-  {
-    title: 'Houston'
-  },
-  {
-    title: 'Lafayette'
-  }
-]
+import {getCity} from '../../services/geoDBService';
 
 export default class StartTrip extends Component {
   state = {
@@ -28,13 +13,24 @@ export default class StartTrip extends Component {
     this.setState({term: event.target.value})
   }
 
+  submitCitySearch = async (event) => {
+    event.preventDefault();
+    console.log(this.state.term)
+    const city = await getCity(this.state.term);
+    console.log(city);
+  }
+
   
 
   render() {
     return (
       <div>
-        <SearchBar term={this.state.term} onInputChange={this.onInputChange}/>
-        <Cities cities={cities}/>
+        <SearchBar 
+          term={this.state.term} 
+          onInputChange={this.onInputChange}
+          submitCitySearch={this.submitCitySearch}
+        />
+        {/* <Cities cities={cities}/> */}
       </div>
     );
   }
