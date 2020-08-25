@@ -4,6 +4,7 @@ const SearchBar = ({term, onInputChange, submitCitySearch}) => {
   return (
     <div>
       <div className="ui form">
+        <div>
           <form className="field" onSubmit={submitCitySearch}>
             <label>Search City</label>
             <input value={term} onChange={onInputChange} className="input" type="text" />
