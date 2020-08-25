@@ -6,21 +6,22 @@ import {getCity} from '../../services/googlePlacesService';
 
 export default class StartTrip extends Component {
   state = {
-    term: "",
+    formData: {
+      term: ""
+    },
   };
 
   onInputChange = (event) => {
-    this.setState({term: event.target.value})
+    const formData = {term: event.target.value}
+    this.setState({formData})
   }
 
   submitCitySearch = async (event) => {
     event.preventDefault();
-    console.log(this.state.term)
-    const city = await getCity(this.state.term);
+    console.log(this.state.formData)
+    const city = await getCity(this.state.formData);
     console.log(city);
   }
-
-  
 
   render() {
     return (
