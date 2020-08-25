@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./StartTrip.css";
 import Cities from '../../components/Cities'
 import SearchBar from '../SearchBar'
-import {getCity} from '../../services/geoDBService';
+import {getCity} from '../../services/googlePlacesService';
 
 export default class StartTrip extends Component {
   state = {
