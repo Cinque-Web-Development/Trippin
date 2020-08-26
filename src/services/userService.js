@@ -9,12 +9,13 @@ function signup(user) {
   })
   .then(res => {
     if (res.ok) return res.json();
+    if (res.status === 500) throw new Error('You forgot to turn your server on!');
     throw new Error('Email already taken!');
   })
   // Parameter destructuring!
   .then(({ token }) => {
     tokenService.setToken(token);
-  });
+  })
   // the above could have been written as
   //.then((token) => token.token);
 }
