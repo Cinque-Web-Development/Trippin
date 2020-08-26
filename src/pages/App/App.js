@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+
 import './App.css';
-import NavBar from '../../components/NavBar/NavBar';
+
 import LoginPage from '../LoginPage/LoginPage';
 import SignupPage from '../SignupPage/SignupPage';
 import ErrorPage from '../ErrorPage/ErrorPage'
-import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
+
 import userService from '../../services/userService';
+
+import Layout from '../../components/Layout/Layout';
 import StartTrip from '../../components/StartTrip/StartTrip'
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
-    user: userService.getUser()
+    user: userService.getUser(),
   }
 
   handleLogout = () => {
@@ -25,42 +29,45 @@ class App extends Component {
 
   render () {
     return (
-      <Switch>
-        <Route exact path='/' render={() => 
-        <>
-           {/* <ErrorBoundary> */}
-            <NavBar 
-              user={this.state.user}
-              handleLogout={this.handleLogout}
-            />
-            <StartTrip />
-           {/* </ErrorBoundary> */}
-        </>
-        }/>
+      <>
+            <Switch>
+              <Route exact path='/' render={() => 
+              <Layout>
+                {/* <ErrorBoundary> */}
+                  <StartTrip />
+                {/* </ErrorBoundary> */}
+              </Layout>
+              }/>
 
-        <Route exact path='/signup' render={({ history }) => 
-          // <ErrorBoundary>
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          // </ErrorBoundary>
-        }/>
+              <Route exact path='/signup' render={({ history }) => 
+              <Layout>
+                {/* <ErrorBoundary> */}
+                  <SignupPage
+                    history={history}
+                    handleSignupOrLogin={this.handleSignupOrLogin}
+                  />
+                {/* </ErrorBoundary> */}
+              </Layout>
+              }/>
 
-        <Route exact path='/login' render={({ history }) => 
-          // <ErrorBoundary>
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          // </ErrorBoundary>
-        }/>
+              <Route exact path='/login' render={({ history }) => 
+              <Layout>
+                {/* <ErrorBoundary> */}
+                  <LoginPage
+                    history={history}
+                    handleSignupOrLogin={this.handleSignupOrLogin}
+                  />
+                {/* </ErrorBoundary> */}
+              </Layout>
+              }/>
 
-        <Route path='*' render={({history}) => 
-          <ErrorPage />
-        }
-        />
-      </Switch>
+              <Route path='*' render={({history}) => 
+              <Layout>
+                <ErrorPage />
+              </Layout>
+              }/>
+            </Switch>
+      </>
     );
   }
 }
