@@ -11,4 +11,5 @@ export function getCity(formData) {
         body: JSON.stringify(formData)
     }, {mode:'cors'})
     .then(res => res.json())
+    .catch(err => err.json())
 }

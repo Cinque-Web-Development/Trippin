@@ -4,7 +4,6 @@ import './index.css';
 import App from './pages/App/App';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-
 ReactDOM.render(
   <Router>
     <React.StrictMode>
@@ -13,6 +12,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
-
-
-
