@@ -12,7 +12,6 @@ const reviewRouter = require('./routes/reviews')
 const googlePlacesRouter = require('./routes/googlePlacesAPI');
 const cors = require('cors')
 
-
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
