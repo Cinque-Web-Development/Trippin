@@ -1,6 +1,5 @@
 import React from 'react';
 import './ErrorPage.css';
-import Footer from '../../components/Footer/Footer'
 
 const ErrorPage = () => {
     return(
@@ -14,7 +13,6 @@ const ErrorPage = () => {
                     <p>{window.location.href} is not a proper route.</p>
                 </main>
             </div>
-            <Footer />
         </>
     )
 }

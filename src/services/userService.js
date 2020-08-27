@@ -8,9 +8,13 @@ function signup(user) {
     body: JSON.stringify(user)
   })
   .then(res => {
-    if (res.ok) return res.json();
-    if (res.status === 500) throw new Error('You forgot to turn your server on!');
-    throw new Error('Email already taken!');
+    console.log(res, '<-- response object')
+    return res.json();
+  })
+  .then(json => {
+    if(json.token) return json;
+    console.log(json, '<-- the error')
+    throw new Error(`${json.message}`)
   })
   // Parameter destructuring!
   .then(({ token }) => {
