@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const googlePlacesAPICtrl = require('../controllers/googlePlacesAPI');
 
-router.use(require('../config/auth'));
+
 router.post('/', checkAuth, googlePlacesAPICtrl.searchCities);
 
 function checkAuth(req, res, next) {

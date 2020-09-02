@@ -6,6 +6,6 @@ router.post('/', tripCtrl.create);
 
 router.delete('/:id', tripCtrl.delete);
 
-router.use(require('../config/auth'));
+
 
 module.exports = router;
