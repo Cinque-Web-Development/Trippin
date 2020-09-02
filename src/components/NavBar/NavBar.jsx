@@ -1,4 +1,5 @@
 import React from 'react';
+import GoogleLoginButton from '../../components/GoogleLoginButton'
 
 const NavBar = ({ user, handleLogout }) => {
     let nav = user ?
@@ -18,8 +19,8 @@ const NavBar = ({ user, handleLogout }) => {
         <nav>
             <div className="nav-wrapper">
                 <ul id="nav-mobile" className="right">
-                    <li><a href="/login" className="nav-link">Log In</a></li>
-                    <li><a href="/signup" className="nav-link">Sign Up</a></li>
+                   <GoogleLoginButton />
+                  
                 </ul>
             </div>
         </nav>
