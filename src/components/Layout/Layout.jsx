@@ -7,7 +7,10 @@ import Footer from '../Footer/Footer';
 export default (props) => {
     return (
         <div id='container'>
-            <NavBar />
+            <NavBar 
+                user={props.user}
+                handleLogout={props.handleLogout}
+            />
             <main>
                 {props.children}
             </main>
