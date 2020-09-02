@@ -1,4 +1,4 @@
-import tokenService from './tokenService';
+
 const BASE_URL = "/api/googleplaces/";
 
 export function getCity(formData) {
@@ -6,7 +6,6 @@ export function getCity(formData) {
         method: "POST",
         headers: {
             'content-type': 'application/json',
-            'Authorization': 'Bearer ' + tokenService.getToken()
         },
         body: JSON.stringify(formData)
     }, {mode:'cors'})
