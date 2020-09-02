@@ -26,6 +26,7 @@ class SignupForm extends Component {
       this.props.handleSignupOrLogin();
       this.props.history.push('/');
     } catch (err) {
+      console.log(err, '<-- error on front-end')
       // Invalid user data (probably duplicate email)
       this.props.updateMessage(err.message);
     }
