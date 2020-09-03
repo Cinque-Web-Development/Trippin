@@ -21,10 +21,7 @@ class App extends Component {
       <>
             <Switch>
               <Route exact path='/' render={() => 
-              <Layout
-                user={this.state.user}
-                handleLogout={this.handleLogout}
-              >
+              <Layout>
                 {/* <ErrorBoundary> */}
                   <StartTrip />
                 {/* </ErrorBoundary> */}
