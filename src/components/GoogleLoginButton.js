@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
-const CLIENT_ID = '<your Client ID>';
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 class GoogleLoginButton extends Component {
    constructor(props) {
     super(props);

@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
-const SALT_ROUNDS = 6;
-
 const userSchema = new mongoose.Schema({
   name: String,
+  googleId: String,
   email: {type: String, required: true, lowercase: true, unique: true},
   password: {type: String, minlength: 5},
   avatar: String,

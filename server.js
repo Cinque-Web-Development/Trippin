@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const logger = require('morgan');
 const port = process.env.PORT || 3001;
+const session = require('express-session');
 const passport = require('passport');
 
 require('dotenv').config();
@@ -20,6 +22,12 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function (req, res, next) {
