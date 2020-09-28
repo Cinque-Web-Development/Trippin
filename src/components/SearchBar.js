@@ -1,18 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
+import "./SearchBar.css";
 
-const SearchBar = ({term, onInputChange, submitCitySearch}) => {
+const SearchBar = ({handleSearchSubmit}) => {
+  const [searchCity, setSearchCity] = useState('')
+
+  const onInputChange = (event) => {
+    setSearchCity(event.target.value)
+  }
+  
   return (
-    <div>
-      <div className="ui form">
-        <div>
-          <form className="field" onSubmit={submitCitySearch}>
-            <label>Search City</label>
-            <input value={term} onChange={onInputChange} className="input" type="text" />
-            <button className="ui green button" type="submit">Search</button>
-          </form>
-        </div>
+    <>
+      <div className="search-bar ui form">
+        <form className="search-form field" onSubmit={(event) => handleSearchSubmit(event, searchCity)}>
+            <label className="city-search">City Search</label>
+            <input id="input-bar" value={searchCity} onChange={onInputChange} type="text"></input>
+            <button className="ui green button">Submit</button>
+        </form>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,17 @@
+.search-bar {
+  width: 50vw;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#input-bar {
+
+}
+
+.city-search {
+  text-align: center;
+}
