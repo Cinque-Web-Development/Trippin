@@ -15,4 +15,8 @@ const App = () => {
   );
 };
 
+{/* <Route path='*' render={({history}) => 
+  <ErrorPage />
+}/> */}
+
 export default App;
