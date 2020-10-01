@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import NavBar from "./components/NavBar";
+import NavBar from "../../components/NavBar";
 
-import SearchLocationInput from "./components/SearchLocationInput";
+import SearchLocationInput from "../../components/SearchLocationInput";
 import "./App.css";
 
 const App = () => {
