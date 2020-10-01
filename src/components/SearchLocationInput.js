@@ -36,11 +36,12 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
 async function handlePlaceSelect(updateQuery) {
   const addressObject = autoComplete.getPlace();
   const query = addressObject.formatted_address;
-  updateQuery(query);
-  console.log(addressObject);
+  updateQuery(query); // I think this is actually setQuery that's being passed through a series of cb functions
+  console.log("query -->", query);
+  console.log("addressObject -->", addressObject);
 }
 
-function SearchLocationInput() {
+function SearchLocationInput({handleSearchSubmit}) {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
 
@@ -54,13 +55,17 @@ function SearchLocationInput() {
   return (
     <div className="search-wrapper">
       <div className="ui input focus">
-        <input
-          ref={autoCompleteRef}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Enter a City"
-          value={query}
-          id="city-search"
-        />
+        <form
+          // onSubmit={(event) => handleSearchSubmit(event, query)}
+        >
+          <input
+            ref={autoCompleteRef}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Enter a City"
+            value={query}
+            id="city-search"
+          />
+        </form>
       </div>
     </div>
   );

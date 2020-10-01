@@ -1,16 +1,35 @@
 import React, { useState } from "react";
+import axios from "axios";
 import NavBar from "./components/NavBar";
 
 import SearchLocationInput from "./components/SearchLocationInput";
 import "./App.css";
 
 const App = () => {
-  const [cities, setCities] = useState([]);
+  const [hotels, setHotels] = useState([]);
+
+  const handleSearchSubmit = async (event, query) => {
+    event.preventDefault();
+
+    axios
+      .get("/hotels", {
+        params: {
+          searchTerm: query,
+        },
+      })
+      .then((response) => {
+        setHotels(response.data.results);
+        console.log(hotels);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
       <NavBar />
-      <SearchLocationInput />
+      <SearchLocationInput 
+        handleSearchSubmit={handleSearchSubmit}
+      />
     </>
   );
 };

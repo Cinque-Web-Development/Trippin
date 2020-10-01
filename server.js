@@ -4,11 +4,11 @@ const port = 3001;
 const axios = require('axios');
 require("dotenv").config()
 
-const key=process.env.GOOGLE_API_KEY;
+const key=process.env.REACT_APP_GOOGLE_API_KEY;
 
-app.get("/cities", (req, res) => {
+app.get("/hotels", (req, res) => {
   
-  axios.get(``)
+  axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+${req.query.query}&key=${key}`)
   .then((response) => {
     res.send(response.data);
   })
