@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import './SearchLocationInput.css';
 
 let autoComplete;
 
@@ -51,13 +52,16 @@ function SearchLocationInput() {
   }, []);
 
   return (
-    <div className="search-location-input">
-      <input
-        ref={autoCompleteRef}
-        onChange={(event) => setQuery(event.target.value)}
-        placeholder="Enter a City"
-        value={query}
-      />
+    <div className="search-wrapper">
+      <div className="ui input focus">
+        <input
+          ref={autoCompleteRef}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Enter a City"
+          value={query}
+          id="city-search"
+        />
+      </div>
     </div>
   );
 }
