@@ -1,0 +1,9 @@
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#city-search {
+    width: 50vw;
+}
