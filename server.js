@@ -8,7 +8,7 @@ const key=process.env.GOOGLE_API_KEY;
 
 app.get("/cities", (req, res) => {
   
-  axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.query.searchCity}&radius=50000&key=${key}`)
+  axios.get(``)
   .then((response) => {
     res.send(response.data);
   })
