@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import {Link} from 'react-router-dom'
 import './SearchLocationInput.css';
 
 let autoComplete;
@@ -55,7 +56,6 @@ function SearchLocationInput({handleSearchSubmit}) {
       <div>
         <form
           className="ui input focus"
-          onSubmit={(event) => handleSearchSubmit(event, query)}
         >
           <input
             ref={autoCompleteRef}
@@ -64,6 +64,7 @@ function SearchLocationInput({handleSearchSubmit}) {
             value={query}
             id="city-search"
           />
+          <Link to="/citydetails" className="ui blue button" role="button" onClick={(event) => handleSearchSubmit(event, query)}>Submit</Link>
         </form>
       </div>
     </div>
