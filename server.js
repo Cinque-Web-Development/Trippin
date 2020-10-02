@@ -7,8 +7,7 @@ require("dotenv").config()
 const key=process.env.REACT_APP_GOOGLE_API_KEY;
 
 app.get("/hotels", (req, res) => {
-  
-  axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+${req.query.query}&key=${key}`)
+  axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+${req.query.searchTerm}&key=${key}`)
   .then((response) => {
     res.send(response.data);
   })

@@ -37,8 +37,6 @@ async function handlePlaceSelect(updateQuery) {
   const addressObject = autoComplete.getPlace();
   const query = addressObject.formatted_address;
   updateQuery(query); // I think this is actually setQuery that's being passed through a series of cb functions
-  console.log("query -->", query);
-  console.log("addressObject -->", addressObject);
 }
 
 function SearchLocationInput({handleSearchSubmit}) {
@@ -54,9 +52,10 @@ function SearchLocationInput({handleSearchSubmit}) {
 
   return (
     <div className="search-wrapper">
-      <div className="ui input focus">
+      <div>
         <form
-          // onSubmit={(event) => handleSearchSubmit(event, query)}
+          className="ui input focus"
+          onSubmit={(event) => handleSearchSubmit(event, query)}
         >
           <input
             ref={autoCompleteRef}

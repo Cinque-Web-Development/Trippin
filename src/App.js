@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
 import NavBar from "./components/NavBar";
-
 import SearchLocationInput from "./components/SearchLocationInput";
 import "./App.css";
 
 const App = () => {
   const [hotels, setHotels] = useState([]);
 
-  const handleSearchSubmit = async (event, query) => {
+  const handleSearchSubmit = async (event, city) => {
     event.preventDefault();
-
     axios
       .get("/hotels", {
         params: {
-          searchTerm: query,
+          searchTerm: city,
         },
       })
       .then((response) => {
         setHotels(response.data.results);
-        console.log(hotels);
       })
       .catch((err) => console.log(err));
   };
