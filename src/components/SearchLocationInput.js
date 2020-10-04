@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import './SearchLocationInput.css';
 
 let autoComplete;
@@ -43,6 +43,7 @@ async function handlePlaceSelect(updateQuery) {
 function SearchLocationInput({handleSearchSubmit}) {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     loadScript(
@@ -50,6 +51,12 @@ function SearchLocationInput({handleSearchSubmit}) {
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
   }, []);
+  
+  const handleSubmit = (event, query) => {
+    event.preventDefault();
+    handleSearchSubmit(query);
+    history.push('/citydetails');
+  }
 
   return (
     <div className="search-wrapper">
@@ -64,7 +71,7 @@ function SearchLocationInput({handleSearchSubmit}) {
             value={query}
             id="city-search"
           />
-          <Link to="/citydetails" className="ui blue button" role="button" onClick={(event) => handleSearchSubmit(event, query)}>Submit</Link>
+          <button className="ui blue button" onClick={(event) => handleSubmit(event, query)}>Submit</button>
         </form>
       </div>
     </div>

@@ -5,7 +5,7 @@ const Hotels = ({hotel}) => {
   return (
     <>
     
-    hotel.name
+    {hotel.name}
   
     </>
   )
