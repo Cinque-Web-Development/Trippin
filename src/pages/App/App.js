@@ -42,7 +42,7 @@ const App = () => {
       <Route exact path="/citydetails" render={() =>
         <>
           <NavBar />
-          <CityDetails hotels={hotels}/>
+          <CityDetails hotels={hotels} city={city}/>
         </>
       }>
       </Route>

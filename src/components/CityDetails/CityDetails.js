@@ -1,10 +1,9 @@
 import React, {useState, useEffect}from 'react';
-import Amenities from '../Amenities/Amenities'
-import axios from 'axios'
+import Amenities from '../Amenities/Amenities';
 
 import './CityDetails.css'
 
-const CityDetails = ({hotels}) => {
+const CityDetails = ({hotels, city}) => {
   const [hotel, setHotel] = useState([])
   
   useEffect(() => {
@@ -14,6 +13,7 @@ const CityDetails = ({hotels}) => {
 
   return (
     <>
+      <h1>{city}</h1>
       <div className="hotels">
         <Amenities amenities={hotel}/>
       </div>
