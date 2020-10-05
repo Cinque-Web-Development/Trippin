@@ -4,6 +4,8 @@ const router = require('express').Router();
 //   res.redirect('/users');
 // });
 
+router.get('/hotels', )
+
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');

@@ -19,6 +19,7 @@ const App = () => {
         },
       })
       .then((response) => {
+        setCity(query)
         setHotels(response.data.results);
         console.log(response.data.results);
       })
