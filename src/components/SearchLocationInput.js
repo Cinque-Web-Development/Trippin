@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import {useHistory} from 'react-router-dom'
 import './SearchLocationInput.css';
 
 let autoComplete;
@@ -36,13 +37,13 @@ function handleScriptLoad(updateQuery, autoCompleteRef) {
 async function handlePlaceSelect(updateQuery) {
   const addressObject = autoComplete.getPlace();
   const query = addressObject.formatted_address;
-  updateQuery(query);
-  console.log(addressObject);
+  updateQuery(query); // I think this is actually setQuery that's being passed through a series of cb functions
 }
 
-function SearchLocationInput() {
+function SearchLocationInput({handleSearchSubmit}) {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     loadScript(
@@ -50,17 +51,28 @@ function SearchLocationInput() {
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
   }, []);
+  
+  const handleSubmit = (event, query) => {
+    event.preventDefault();
+    handleSearchSubmit(query);
+    history.push('/citydetails');
+  }
 
   return (
     <div className="search-wrapper">
-      <div className="ui input focus">
-        <input
-          ref={autoCompleteRef}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Enter a City"
-          value={query}
-          id="city-search"
-        />
+      <div>
+        <form
+          className="ui input focus"
+        >
+          <input
+            ref={autoCompleteRef}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Enter a City"
+            value={query}
+            id="city-search"
+          />
+          <button className="ui blue button" onClick={(event) => handleSubmit(event, query)}>Submit</button>
+        </form>
       </div>
     </div>
   );
