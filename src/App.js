@@ -20,7 +20,6 @@ const App = () => {
       })
       .then((response) => {
         setHotels(response.data.results);
-        console.log(response.data.results);
       })
       .catch((err) => console.log(err));  
   };
