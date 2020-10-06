@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Amenities from "../Amenities/Amenities";
 import faker from "faker";
+import { Link } from 'react-router-dom';
 
 import "./CityDetails.css";
 
@@ -15,21 +16,40 @@ const CityDetails = ({ hotels, city, restaurants }) => {
     setHotel(getHotel);
   }, [hotels, restaurants]);
 
-  return (
+  let cityDetailsPage = city ?
+
     <div className="CityDetails">
-      <h1 className="city-name">{city}</h1>
-      <img className="city-detail-img" alt="" src={faker.image.city()}></img>
-      <p className="city-description">{faker.lorem.paragraph()}</p>
-      <div className="amenity-wrapper">
-        <h2 className="amenity-title">Hotels</h2>
-        <Amenities amenities={hotel} />
+        <h1 className="city-name">{city}</h1>
+        <img className="city-detail-img" alt="" src={faker.image.city()}></img>
+        <p className="city-description">{faker.lorem.paragraph()}</p>
+        <div className="amenity-wrapper">
+          <h2 className="amenity-title">Hotels</h2>
+          {hotel.length ? 
+            <Amenities amenities={hotel} />
+            :
+            <div class="ui active inline loader"></div>
+          }
+        </div>
+        <div className="amenity-wrapper">
+          <h2 className="amenity-title" id="restaurant-list-header">Restaurants</h2>
+          {restaurant.length ?
+            <Amenities amenities={restaurant} />
+            :
+            <div class="ui active inline loader"></div>
+          }
+        </div>
       </div>
-      <div className="amenity-wrapper">
-        <h2 className="amenity-title">Restaurants</h2>
-        <Amenities amenities={restaurant} />
-      </div>
+
+  :
+    <div className="return-home">
+      <Link to="/"><h2>Search for a city to view details</h2></Link>
     </div>
-  );
+
+    return (
+      <>
+      {cityDetailsPage}
+      </>
+    );
 };
 
 export default CityDetails;

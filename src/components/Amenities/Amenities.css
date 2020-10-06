@@ -1,4 +1,5 @@
 .amenity-card {
   display: flex;
   margin: 0px 15px 0px 15px;
+  padding-bottom: 5px;
 }
