@@ -1,3 +1,8 @@
-.hotels {
+.amenity-wrapper {
   display: flex;
+  justify-content: center;
+}
+
+.city-name {
+  text-align: center;
 }

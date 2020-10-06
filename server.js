@@ -14,6 +14,14 @@ app.get("/hotels", (req, res) => {
   .catch((err) => console.log(err));
 })
 
+app.get('/restaurants', (req, res) => {
+  axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+${req.query.searchTerm}&key=${key}`)
+  .then((response) => {
+    res.send(response.data);
+  })
+  .catch((err) => console.log(err))
+})
+
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`)

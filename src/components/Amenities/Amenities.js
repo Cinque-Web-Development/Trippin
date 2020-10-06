@@ -5,7 +5,7 @@ import './Amenities.css'
 export default function Amenities({ amenities }) {
   return (
     amenities.map((amenity) => 
-      <div key={amenity.name}>
+      <div key={amenity.name} className="amenity-card">
         <div  className=" ui link cards">
           <div className="card">
             <div className="image">
