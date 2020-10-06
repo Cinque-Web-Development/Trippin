@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Route, Switch } from 'react-router-dom';
+
 import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
-import CityDetails from '../../components/CityDetails/CityDetails'
-import ErrorPage from '../ErrorPage/ErrorPage'
-import { Route, Switch } from 'react-router-dom'
+import CityDetails from '../../components/CityDetails/CityDetails';
+
+import ErrorPage from '../ErrorPage/ErrorPage';
+
+import { getHotels, getRestaurants } from '../../services/google-api'
+
 import "./App.css";
 
 const App = () => {
@@ -13,27 +18,12 @@ const App = () => {
   const [restaurants, setRestaurants] = useState([])
 
   const handleSearchSubmit = async (query) => {
-    axios
-      .get("/hotels", {
-        params: {
-          searchTerm: query,
-        },
-      })
-      .then((response) => {
-        setCity(query)
-        setHotels(response.data.results);
-      })
-      .catch((err) => console.log(err));  
+    setCity(query)
 
-    axios.get('/restaurants', {
-      params: {
-        searchTerm: query,
-      },
-    })  
-    .then((response) => {
-      setRestaurants(response.data.results);
-    })
-    .catch((err) => console.log(err))
+    const hotels = await getHotels(query)
+    setHotels(hotels.data.results)
+    const restaurants = await getRestaurants(query)
+    setRestaurants(restaurants.data.results)
   };
 
 
