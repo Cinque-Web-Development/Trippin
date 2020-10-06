@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Route, Switch } from 'react-router-dom';
+
 import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
-import CityDetails from '../../components/CityDetails/CityDetails'
-import ErrorPage from '../ErrorPage/ErrorPage'
-import { Route, Switch } from 'react-router-dom'
+import CityDetails from '../../components/CityDetails/CityDetails';
+
+import ErrorPage from '../ErrorPage/ErrorPage';
+
+import {getHotels} from '../../services/google-api'
+
 import "./App.css";
 
 const App = () => {
@@ -12,18 +17,10 @@ const App = () => {
   const [hotels, setHotels] = useState([])
 
   const handleSearchSubmit = async (query) => {
-    axios
-      .get("/hotels", {
-        params: {
-          searchTerm: query,
-        },
-      })
-      .then((response) => {
-        setCity(query)
-        setHotels(response.data.results);
-        console.log(response.data.results);
-      })
-      .catch((err) => console.log(err));  
+    setCity(query)
+    const hotels = getHotels(query)
+    console.log(hotels)
+    setHotels(hotels)
   };
 
 
@@ -42,7 +39,10 @@ const App = () => {
       <Route exact path="/citydetails" render={() =>
         <>
           <NavBar />
-          <CityDetails hotels={hotels} city={city}/>
+          <CityDetails 
+            hotels={hotels} 
+            city={city}
+          />
         </>
       }>
       </Route>
