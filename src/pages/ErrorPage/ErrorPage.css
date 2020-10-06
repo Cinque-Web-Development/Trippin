@@ -1,0 +1,30 @@
+#errorPage {
+    padding:30px 20px;
+    background-image: url('../../images/trippinMap.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#errorPage > div{
+    display:flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+#errorPage > div > img {
+    height:300px;
+}
+
+#errorPage > img {
+    height:250px;
+}
+
+main {
+    background-color: white;
+    padding:10px 0 10px 10px;
+    border-radius: 5px;
+}
+
+p {
+    margin-left:20px;
+}
