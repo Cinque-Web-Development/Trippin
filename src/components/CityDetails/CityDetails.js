@@ -16,7 +16,7 @@ const CityDetails = ({ hotels, city, restaurants }) => {
   }, [hotels, restaurants]);
 
   return (
-    <>
+    <div className="CityDetails">
       <h1 className="city-name">{city}</h1>
       <img className="city-detail-img" alt="" src={faker.image.city()}></img>
       <p className="city-description">{faker.lorem.paragraph()}</p>
@@ -28,7 +28,7 @@ const CityDetails = ({ hotels, city, restaurants }) => {
         <h2 className="amenity-title">Restaurants</h2>
         <Amenities amenities={restaurant} />
       </div>
-    </>
+    </div>
   );
 };
 
