@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 15px;
   overflow-x: scroll;
 }
 
@@ -9,20 +10,39 @@
   display: flex;
   align-self: flex-start;
   margin: 0 0 10px 15px;
+  border-bottom: 1px solid black;
 }
 
-.city-name {
+.city-name { 
   padding: 10px 0 5px 0;
+  text-shadow: 1px 1px 1px grey;
 }
 
-.amenity-title {
-  width: 150px;
+.amenity-title { 
+  width: 120px;
+  align-self: center;
+  text-align: center;
 }
 
-.city-detail-img {
+#restaurant { font-size: 20px; }
+
+.city-detail-img { 
   margin-bottom: 5px;
+  max-width: 88vw;
 }
 
-.city-description {
-  max-width: 85vw;
+.city-description { max-width: 85vw; }
+
+.return-home { 
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .amenity-wrapper { 
+    flex-direction: column;
+    align-self: center;
+  }
+  
+  .amenity-title { width: auto; }
 }
