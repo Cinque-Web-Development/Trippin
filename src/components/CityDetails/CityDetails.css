@@ -1,11 +1,18 @@
+.CityDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: scroll;
+}
+
 .amenity-wrapper {
   display: flex;
-  justify-content: center;
+  align-self: flex-start;
+  margin: 0 0 10px 15px;
 }
 
 .city-name {
-  text-align: center;
-  padding-bottom: 5px;
+  padding: 10px 0 5px 0;
 }
 
 .amenity-title {
@@ -13,5 +20,9 @@
 }
 
 .city-detail-img {
-  
+  margin-bottom: 5px;
+}
+
+.city-description {
+  max-width: 85vw;
 }
