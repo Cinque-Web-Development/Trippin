@@ -18,11 +18,11 @@ const CityDetails = ({hotels, city, restaurants}) => {
     <>
       <h1 className="city-name">{city}</h1>
       <div className="amenity-wrapper">
-        <h2>Hotels</h2>
+        <h2 className="amenity-title">Hotels</h2>
         <Amenities amenities={hotel}/>
       </div>
       <div className="amenity-wrapper">
-        <h2>Restaurants</h2>
+        <h2 className="amenity-title">Restaurants</h2>
         <Amenities amenities={restaurant}/>
       </div>
     </>
