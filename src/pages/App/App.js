@@ -18,11 +18,12 @@ const App = () => {
 
   const handleSearchSubmit = async (query) => {
     setCity(query)
-
-    const hotels = await getHotels(query)
-    setHotels(hotels.data.results)
-    const restaurants = await getRestaurants(query)
-    setRestaurants(restaurants.data.results)
+    const googleHotels = await getHotels(query)
+    googleHotels.data.results.sort((a, b) => b.rating - a.rating)
+    setHotels(googleHotels.data.results)
+    const googleRestaurants = await getRestaurants(query)
+    googleRestaurants.data.results.sort((a, b) => b.rating - a.rating)
+    setRestaurants(googleRestaurants.data.results)
   };
 
 
