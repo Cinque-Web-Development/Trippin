@@ -6,7 +6,7 @@ const NavBar = () => {
     <>
       <nav className="nav-bar">
         <div className="nav-wrapper">
-        <a href="/" className="brand-logo left"><img className="trippin-logo" src="/images/trip-logo.png"></img></a>
+        <a href="/" className="brand-logo left"><img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img></a>
           <ul className="right">
             <li>
               <a href="/">Start Trip</a>

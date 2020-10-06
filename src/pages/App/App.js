@@ -8,7 +8,7 @@ import CityDetails from '../../components/CityDetails/CityDetails';
 
 import ErrorPage from '../ErrorPage/ErrorPage';
 
-import {getHotels} from '../../services/google-api'
+import { getHotels, getRestaurants } from '../../services/google-api'
 
 import "./App.css";
 
@@ -18,27 +18,12 @@ const App = () => {
   const [restaurants, setRestaurants] = useState([])
 
   const handleSearchSubmit = async (query) => {
-    axios
-      .get("/hotels", {
-        params: {
-          searchTerm: query,
-        },
-      })
-      .then((response) => {
-        setCity(query)
-        setHotels(response.data.results);
-      })
-      .catch((err) => console.log(err));  
+    setCity(query)
 
-    axios.get('/restaurants', {
-      params: {
-        searchTerm: query,
-      },
-    })  
-    .then((response) => {
-      setRestaurants(response.data.results);
-    })
-    .catch((err) => console.log(err))
+    const hotels = await getHotels(query)
+    setHotels(hotels.data.results)
+    const restaurants = await getRestaurants(query)
+    setRestaurants(restaurants.data.results)
   };
 
 
