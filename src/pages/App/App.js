@@ -15,12 +15,30 @@ import "./App.css";
 const App = () => {
   const [city, setCity] = useState('');
   const [hotels, setHotels] = useState([])
+  const [restaurants, setRestaurants] = useState([])
 
   const handleSearchSubmit = async (query) => {
-    setCity(query)
-    const hotels = getHotels(query)
-    console.log(hotels)
-    setHotels(hotels)
+    axios
+      .get("/hotels", {
+        params: {
+          searchTerm: query,
+        },
+      })
+      .then((response) => {
+        setCity(query)
+        setHotels(response.data.results);
+      })
+      .catch((err) => console.log(err));  
+
+    axios.get('/restaurants', {
+      params: {
+        searchTerm: query,
+      },
+    })  
+    .then((response) => {
+      setRestaurants(response.data.results);
+    })
+    .catch((err) => console.log(err))
   };
 
 
@@ -39,10 +57,7 @@ const App = () => {
       <Route exact path="/citydetails" render={() =>
         <>
           <NavBar />
-          <CityDetails 
-            hotels={hotels} 
-            city={city}
-          />
+          <CityDetails hotels={hotels} city={city} restaurants={restaurants}/>
         </>
       }>
       </Route>

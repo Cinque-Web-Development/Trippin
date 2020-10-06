@@ -6,7 +6,8 @@ const NavBar = () => {
     <>
       <nav className="nav-bar">
         <div className="nav-wrapper">
-          <ul className="right hide-on-med-and-down">
+        <a href="/" className="brand-logo left"><img className="trippin-logo" src="/images/trip-logo.png"></img></a>
+          <ul className="right">
             <li>
               <a href="/">Start Trip</a>
             </li>
