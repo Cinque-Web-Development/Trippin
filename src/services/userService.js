@@ -3,6 +3,7 @@ const BASE_URL = '/api/users/';
 
 function signup(user) {
   console.log(user, "<-- front-end should be user data")
+  console.log(JSON.stringify(user), "<-- json.stringify(user) frontend")
   return fetch(BASE_URL + 'signup', {
     method: 'POST',
     headers: new Headers({'Content-Type': 'application/json'}),
