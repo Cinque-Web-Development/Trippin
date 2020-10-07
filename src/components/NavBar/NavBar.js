@@ -1,8 +1,8 @@
 import React from "react";
 import './NavBar.css'
 
-const NavBar = () => {
-  return (
+const NavBar = ({ user, handleLogout }) => {
+  let nav = user ? 
     <>
       <nav className="nav-bar">
         <div className="nav-wrapper">
@@ -11,10 +11,40 @@ const NavBar = () => {
             <li>
               <a href="/">Start Trip</a>
             </li>
+            <li>
+              <a href={`/user/${user._id}`}>Welcome, {user.name}</a>
+            </li>
+            <li>
+              <a href=" " onClick={handleLogout}>Log Out</a>
+            </li>
           </ul>
         </div>
       </nav>
     </>
+    :
+    <>
+      <nav className="nav-bar">
+        <div className="nav-wrapper">
+        <a href="/" className="brand-logo left"><img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img></a>
+          <ul className="right">
+            <li>
+              <a href="/">Start Trip</a>
+            </li>
+            <li>
+              <a href="/login">Log In</a>
+            </li>
+            <li>
+              <a href="/signup">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
+
+
+
+  return (
+    nav
   );
 };
 
