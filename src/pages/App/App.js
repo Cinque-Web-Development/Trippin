@@ -5,13 +5,18 @@ import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
 import CityDetails from '../../components/CityDetails/CityDetails';
 import HotelList from '../../components/HotelList/HotelList'
+
+import LoginPage from '../LoginPage/LoginPage';
+import SignupPage from '../SignupPage/SignupPage';
 import ErrorPage from '../ErrorPage/ErrorPage';
 
+import userService from '../../services/userService';
 import { getHotels, getRestaurants } from '../../services/google-api'
 
 import "./App.css";
 
 const App = () => {
+  const [user, setUser] = useState('');
   const [city, setCity] = useState('');
   const [hotels, setHotels] = useState([])
   const [restaurants, setRestaurants] = useState([])
@@ -26,27 +31,42 @@ const App = () => {
     setRestaurants(googleRestaurants.data.results)
   };
 
+  const handleLogout = () => {
+    userService.logout();
+    setUser(null);
+  };
+
+  const handleSignupOrLogin = () => {
+    setUser(userService.getUser());
+  };
 
   return (
-    <Switch>
-      <Route exact path="/" render={() => 
-        <>
-          <NavBar />
-          <SearchLocationInput 
-            handleSearchSubmit={handleSearchSubmit}
-          />
-        </>
-      }>
-      </Route>
+    <>
+      <NavBar 
+        handleLogout={handleLogout}
+      />
 
-      <Route exact path="/citydetails" render={() =>
-        <>
-          <NavBar />
-          <CityDetails hotels={hotels} city={city} restaurants={restaurants}/>
-        </>
-      }>
-      </Route>
-      <Route exact path="/citydetails/hotels" render={() => (
+      <Switch>
+        <Route exact path="/" render={() => 
+          <>
+            <SearchLocationInput 
+              handleSearchSubmit={handleSearchSubmit}
+            />
+          </>
+        }>
+        </Route>
+
+        <Route exact path="/citydetails" render={() =>
+          <>
+            <CityDetails 
+              hotels={hotels} 
+              city={city} 
+              restaurants={restaurants}
+            />
+          </>
+        }>
+        </Route>
+        <Route exact path="/citydetails/hotels" render={() => (
         <>
         <NavBar />
         <HotelList hotels={hotels} city={city}/>
@@ -54,10 +74,27 @@ const App = () => {
       )}>
       </Route>
 
-      <Route path="*" render={({history}) => 
-        <ErrorPage />
-      }></Route>
-    </Switch>
+        <Route exact path="/login" render={() => 
+          <>
+            <LoginPage 
+              handleSignupOrLogin={handleSignupOrLogin}
+            />
+          </>
+        }></Route>
+
+        <Route exact path="/signup" render={() => 
+          <>
+            <SignupPage 
+              handleSignupOrLogin={handleSignupOrLogin}
+            />
+          </>
+        }></Route>
+
+        <Route path="*" render={({history}) => 
+          <ErrorPage />
+        }></Route>
+      </Switch>
+    </>
   );
 };
 
