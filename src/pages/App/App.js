@@ -9,7 +9,7 @@ import {
 import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
 import CityDetails from "../../components/CityDetails/CityDetails";
-import HotelList from "../../components/HotelList/HotelList";
+import AmenityList from "../../components/AmenityList/AmenityList";
 
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
@@ -72,37 +72,28 @@ const App = ({
     } >
     </Route>
 
-    <Route exact path = "/citydetails"
-    render = {
-      () => ( <>
-        <CityDetails hotels = {
-          hotels
-        }
-        city = {
-          city
-        }
-        restaurants = {
-          restaurants
-        }
-        /> </>
-      )
-    } >
-    </Route> 
-    <Route exact path = "/citydetails/hotels"
-    render = {
-      () => ( 
-        <>
-        <HotelList hotels = {
-          hotels
-        }
-        city = {
-          city
-        }
-        /> 
-        </>
-      )
-    } >
-    </Route>
+        <Route
+          exact
+          path="/citydetails"
+          render={() => (
+            <>
+              <CityDetails
+                hotels={hotels}
+                city={city}
+                restaurants={restaurants}
+              />
+            </>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/citydetails/hotels"
+          render={() => (
+            <>
+              <AmenityList amenity={hotels} city={city} type="Hotels"/>
+            </>
+          )}
+        ></Route>
 
     <Route exact path = "/login"
     render = {

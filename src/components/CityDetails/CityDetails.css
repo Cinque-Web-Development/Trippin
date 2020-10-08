@@ -6,7 +6,6 @@
   overflow-x: scroll;
 }
 
-
 .amenity-wrapper {
   display: flex;
   align-self: flex-start;
@@ -25,7 +24,7 @@
   text-align: center;
 }
 
-#restaurant { font-size: 20px; }
+#restaurant-list-header { font-size: 20px; }
 
 .city-detail-img { 
   margin-bottom: 5px;
