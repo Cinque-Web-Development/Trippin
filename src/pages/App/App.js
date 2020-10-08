@@ -1,25 +1,18 @@
-import React, {
-  useState
-} from "react";
-import {
-  Route,
-  Switch
-} from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Switch } from "react-router-dom";
 
 import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
 import CityDetails from "../../components/CityDetails/CityDetails";
 import AmenityList from "../../components/AmenityList/AmenityList";
+import AmenityDetails from '../../components/AmenityDetails/AmenityDetails';
 
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
 import ErrorPage from "../ErrorPage/ErrorPage";
 
 import userService from "../../services/userService";
-import {
-  getHotels,
-  getRestaurants
-} from "../../services/google-api";
+import { getHotels, getRestaurants } from "../../services/google-api";
 
 import "./App.css";
 
@@ -72,37 +65,42 @@ const App = ({
     } >
     </Route>
 
-        <Route
-          exact
-          path="/citydetails"
-          render={() => (
-            <>
-              <CityDetails
-                hotels={hotels}
-                city={city}
-                restaurants={restaurants}
-              />
-            </>
-          )}
-        ></Route>
-        <Route
-          exact
-          path="/citydetails/hotels"
-          render={() => (
-            <>
-              <AmenityList amenity={hotels} city={city} type="Hotels"/>
-            </>
-          )}
-        ></Route>
-        <Route
-          exact
-          path="/citydetails/restaurants"
-          render={() => (
-            <>
-              <AmenityList amenity={restaurants} city={city} type="Restaurants"/>
-            </>
-          )}
-        ></Route>
+    <Route
+      exact path="/citydetails"
+      render={() => (
+        <>
+          <CityDetails
+            hotels={hotels}
+            city={city}
+            restaurants={restaurants}
+          />
+        </>
+      )}
+    ></Route>
+    <Route
+      exact path="/citydetails/hotels"
+      render={() => (
+        <>
+          <AmenityList amenity={hotels} city={city} type="Hotels"/>
+        </>
+      )}
+    ></Route>
+    <Route
+      exact path="/citydetails/restaurants"
+      render={() => (
+        <>
+          <AmenityList amenity={restaurants} city={city} type="Restaurants"/>
+        </>
+      )}
+    ></Route>
+    <Route
+      exact path="/citydetails/:id"
+      render={() => (
+        <>
+          <AmenityDetails city={city} type="Restaurants"/>
+        </>
+      )}
+    ></Route>
 
     <Route exact path = "/login"
     render = {

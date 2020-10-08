@@ -1,14 +1,16 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import faker from "faker";
 import "./AmenityList.css";
 
 const AmenityList = ({ amenity, city, type }) => {
+
   return (
     <>
       <h1 className="amenity-list-city"> {type} in {city}</h1>
       <div className="amenity-list-wrapper">
         {amenity.map((a) => (
-          <div className="amenity-cards-list">
+          <Link to={`/citydetails/${a.place_id}`} className="amenity-cards-list">
             <div key={a.name}>
               <div className="ui link cards">
                 <div className="card">
@@ -21,7 +23,7 @@ const AmenityList = ({ amenity, city, type }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>
