@@ -94,6 +94,15 @@ const App = ({
             </>
           )}
         ></Route>
+        <Route
+          exact
+          path="/citydetails/restaurants"
+          render={() => (
+            <>
+              <AmenityList amenity={restaurants} city={city} type="Restaurants"/>
+            </>
+          )}
+        ></Route>
 
     <Route exact path = "/login"
     render = {

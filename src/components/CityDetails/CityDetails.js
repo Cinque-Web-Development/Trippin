@@ -31,9 +31,7 @@ const CityDetails = ({ hotels, city, restaurants }) => {
           )}
         </div>
         <div className="amenity-wrapper">
-          <h2 className="amenity-title" id="restaurant-list-header">
-            Restaurants
-          </h2>
+          <Link to='/citydetails/restaurants' className="amenity-title"><h2 id="restaurant-list-header">Restaurants</h2></Link>
           {restaurant.length ? (
             <Amenities amenities={restaurant} />
           ) : (
