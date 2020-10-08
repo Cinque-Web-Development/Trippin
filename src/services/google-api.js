@@ -11,3 +11,9 @@ export function getRestaurants(query) {
     return axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+${query}&key=${key}`)
     .catch((err) => console.log(err));
 }
+
+// export function getAmenityDetails(id) {
+//     console.log(id);
+//     return axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&key=${key}`)
+//     .catch((err) => console.log(err));
+// }
