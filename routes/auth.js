@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const usersCtrl = require('../controllers/users');
+const authCtrl = require('../controllers/auth');
 
-router.post('/signup', usersCtrl.signup);
-router.post('/login', usersCtrl.login);
-router.get('/user/:id', usersCtrl.show);
+router.post('/signup', authCtrl.signup);
+router.post('/login', authCtrl.login);
+router.get('/user/:id', authCtrl.show);
 
 router.use(require('../config/auth'));
 

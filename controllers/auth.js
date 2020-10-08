@@ -10,11 +10,12 @@ module.exports = {
 };
 
 async function signup(req, res) {
-  console.log(req.body, "<-- back-end req.body")
   const user = new User(req.body);
-  console.log(user);
+  console.log(user, "<-- user for database");
   try {
-    await user.save();
+    await user.save(function (err) {
+      if (err) console.log(err)
+    });
     const token = createJWT(user);
     res.json({ token });
   } catch (err) {
