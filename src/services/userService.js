@@ -31,6 +31,7 @@ function logout() {
 }
 
 function login(creds) {
+  console.log(creds)
   return fetch(BASE_URL + 'login', {
     method: 'POST',
     headers: new Headers({'Content-Type': 'application/json'}),

@@ -14,8 +14,6 @@ app.use(bodyParser.json());
 // app.use(logger('dev'));
 app.use('/api/auth', authRouter);
 
-
-
 app.listen(port, () => {
   console.log(`Listening on ${port}`)
 });
