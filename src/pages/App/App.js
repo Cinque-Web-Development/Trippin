@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
 import CityDetails from "../../components/CityDetails/CityDetails";
-import HotelList from "../../components/HotelList/HotelList";
+import AmenityList from "../../components/AmenityList/AmenityList";
 
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
@@ -73,7 +73,7 @@ const App = () => {
           path="/citydetails/hotels"
           render={() => (
             <>
-              <HotelList hotels={hotels} city={city} />
+              <AmenityList amenity={hotels} city={city} type="Hotels"/>
             </>
           )}
         ></Route>

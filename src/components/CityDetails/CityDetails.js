@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Amenities from "../Amenities/Amenities";
-import HotelList from "../HotelList/HotelList";
 import faker from "faker";
 import { Link } from "react-router-dom";
 
@@ -18,34 +17,30 @@ const CityDetails = ({ hotels, city, restaurants }) => {
   }, [hotels, restaurants]);
 
   let cityDetailsPage = city ? (
-    <div className="CityDetails">
-      <h1 className="city-name">{city}</h1>
-      <img className="city-detail-img" alt="" src={faker.image.city()}></img>
-      <p className="city-description">{faker.lorem.paragraph()}</p>
-
-      <div id="sidebar" className="ui visible sidebar" >
-        <Link to="/citydetails/hotels">Hotels</Link>
+    
+      <div className="CityDetails pusher">
+        <h1 className="city-name">{city}</h1>
+        <img className="city-detail-img" alt="" src={faker.image.city()}></img>
+        <p className="city-description">{faker.lorem.paragraph()}</p>
+        <div className="amenity-wrapper">
+          <Link to='/citydetails/hotels' className="amenity-title"><h2>Hotels</h2></Link>
+          {hotel.length ? (
+            <Amenities amenities={hotel} />
+          ) : (
+            <div className="ui active inline loader"></div>
+          )}
+        </div>
+        <div className="amenity-wrapper">
+          <h2 className="amenity-title" id="restaurant-list-header">
+            Restaurants
+          </h2>
+          {restaurant.length ? (
+            <Amenities amenities={restaurant} />
+          ) : (
+            <div className="ui active inline loader"></div>
+          )}
+        </div>
       </div>
-
-      <div className="amenity-wrapper">
-        <h2 className="amenity-title">Hotels</h2>
-        {hotel.length ? (
-          <Amenities amenities={hotel} />
-        ) : (
-          <div class="ui active inline loader"></div>
-        )}
-      </div>
-      <div className="amenity-wrapper">
-        <h2 className="amenity-title" id="restaurant-list-header">
-          Restaurants
-        </h2>
-        {restaurant.length ? (
-          <Amenities amenities={restaurant} />
-        ) : (
-          <div class="ui active inline loader"></div>
-        )}
-      </div>
-    </div>
   ) : (
     <div className="return-home">
       <Link to="/">
