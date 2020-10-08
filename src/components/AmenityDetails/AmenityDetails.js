@@ -33,14 +33,12 @@ export default function AmenityDetails() {
 
   let amenityDetailsPage = amenityDetails ? (
 
-    <div>
+    <div className="AmenityDetails">
       <h1>{amenityDetails.name}</h1>
       <img alt="" src={faker.image.business()}></img>
       <h2>{amenityDetails.formatted_address}</h2>
-      <h2>{amenityDetails.formatted_phone_number}</h2>'
-      <div>
-        <Reviews reviews={reviews}/>
-      </div>
+      <h2>{amenityDetails.formatted_phone_number}</h2>
+      <Reviews reviews={reviews}/>
     </div>
   )
   :

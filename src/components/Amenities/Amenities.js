@@ -1,11 +1,12 @@
 import React from "react";
-import faker from 'faker'
-import './Amenities.css'
+import faker from 'faker';
+import {Link} from 'react-router-dom';
+import './Amenities.css';
 
 export default function Amenities({ amenities }) {
   return (
     amenities.map((amenity) => 
-      <div key={amenity.name} className="amenity-card">
+      <Link to={`/citydetails/${amenity.place_id}`} key={amenity.name} className="amenity-card">
         <div  className="ui link cards">
           <div className="card">
             <div className="image">
@@ -16,7 +17,7 @@ export default function Amenities({ amenities }) {
             <div className="description">{amenity.formatted_address}</div>
           </div>
         </div>
-      </div>
+      </Link>
     )
   );
 }
