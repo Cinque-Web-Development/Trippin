@@ -1,0 +1,20 @@
+.amenity-list-city {
+  text-align: center;
+}
+
+.amenity-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.amenity-cards-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+#amenity-list-header {
+  height: 44px;
+}
