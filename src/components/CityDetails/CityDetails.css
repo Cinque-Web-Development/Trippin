@@ -33,11 +33,6 @@
 
 .city-description { max-width: 85vw; }
 
-.return-home { 
-  text-align: center;
-  margin-top: 20px;
-}
-
 #sidebar {
   display: flex;
   align-items: center;

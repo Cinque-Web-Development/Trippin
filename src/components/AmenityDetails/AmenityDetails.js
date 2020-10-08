@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Reviews from "../Reviews/Reviews";
+import ReturnHome from '../ReturnHome/ReturnHome';
 // import { getAmenityDetails } from "../../services/google-api";
 import "./AmenityDetails.css";
 import axios from "axios";
@@ -30,15 +31,25 @@ export default function AmenityDetails() {
     getAmenityDetails(id);
   }, [id]);
 
-  return (
-    <div>
+  let amenityDetailsPage = amenityDetails ? (
+
+    <div className="AmenityDetails">
       <h1>{amenityDetails.name}</h1>
       <img alt="" src={faker.image.business()}></img>
       <h2>{amenityDetails.formatted_address}</h2>
-      <h2>{amenityDetails.formatted_phone_number}</h2>'
-      <div>
-        <Reviews reviews={reviews}/>
-      </div>
+      <h2>{amenityDetails.formatted_phone_number}</h2>
+      <Reviews reviews={reviews}/>
     </div>
+  )
+  :
+  (
+    <>
+    <ReturnHome />
+    </>
+  )
+    return (
+      <>
+      {amenityDetailsPage}
+      </>
   );
 }

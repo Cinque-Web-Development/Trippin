@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import faker from "faker";
+import ReturnHome from '../ReturnHome/ReturnHome';
 import "./AmenityList.css";
 
 const AmenityList = ({ amenity, city, type }) => {
 
-  return (
+  let amenityListPage = city ? (
+    
     <>
       <h1 className="amenity-list-city"> {type} in {city}</h1>
       <div className="amenity-list-wrapper">
@@ -26,6 +28,18 @@ const AmenityList = ({ amenity, city, type }) => {
           </Link>
         ))}
       </div>
+    </>
+  )
+  :
+  (
+    <>
+    <ReturnHome />
+    </>
+  )
+  
+  return (
+    <>
+    {amenityListPage}
     </>
   );
 };

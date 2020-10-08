@@ -1,0 +1,8 @@
+.review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+}
+
+#review{ width: 100%; }

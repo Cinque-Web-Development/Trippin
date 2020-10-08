@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Amenities from "../Amenities/Amenities";
+import ReturnHome from '../ReturnHome/ReturnHome';
 import faker from "faker";
 import { Link } from "react-router-dom";
 
@@ -40,11 +41,9 @@ const CityDetails = ({ hotels, city, restaurants }) => {
         </div>
       </div>
   ) : (
-    <div className="return-home">
-      <Link to="/">
-        <h2>Search for a city to view details</h2>
-      </Link>
-    </div>
+    <>
+    <ReturnHome />
+    </>
   );
 
   return <>{cityDetailsPage}</>;
