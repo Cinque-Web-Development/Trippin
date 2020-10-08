@@ -1,22 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-// import { getAmenityDetails } from '../../services/google-api';
-import './AmenityDetails.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Reviews from "../Reviews/Reviews";
+// import { getAmenityDetails } from "../../services/google-api";
+import "./AmenityDetails.css";
+import axios from "axios";
+import faker from "faker";
 
 export default function AmenityDetails() {
-    const [amenityDetails, setAmenityDetails] = useState([]);
-    const [reviews, setReviews] = useState([])
-    const { id } = useParams();
+  const [amenityDetails, setAmenityDetails] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const { id } = useParams();
 
-    useEffect(() => {
-        const googleAmenityDetails =  getAmenityDetails(id);
-        setAmenityDetails(googleAmenityDetails.data.results);
-        console.log(amenityDetails);
-    }, [id])
+  useEffect(() => {
+    const getAmenityDetails = async (id) => {
+      axios
+        .get("/citydetails/:id", {
+          params: {
+            id: id,
+          },
+        })
+        .then(function (response) {
+          console.log(response.data.result);
+          setAmenityDetails(response.data.result);
 
-    return (
-        <div>
-            <h1>Amenity Details</h1>
-        </div>
-    )
+          setReviews(response.data.result.reviews);
+        })
+        .catch((err) => console.log(err));
+    };
+    getAmenityDetails(id);
+  }, [id]);
+
+  return (
+    <div>
+      <h1>{amenityDetails.name}</h1>
+      <img alt="" src={faker.image.business()}></img>
+      <h2>{amenityDetails.formatted_address}</h2>
+      <h2>{amenityDetails.formatted_phone_number}</h2>'
+      <div>
+        <Reviews reviews={reviews}/>
+      </div>
+    </div>
+  );
 }

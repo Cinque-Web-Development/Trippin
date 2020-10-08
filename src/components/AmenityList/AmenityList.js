@@ -4,14 +4,13 @@ import faker from "faker";
 import "./AmenityList.css";
 
 const AmenityList = ({ amenity, city, type }) => {
-  const id = amenity.place_id;
 
   return (
     <>
       <h1 className="amenity-list-city"> {type} in {city}</h1>
       <div className="amenity-list-wrapper">
         {amenity.map((a) => (
-          <Link to={`/citydetails/${id}`} className="amenity-cards-list">
+          <Link to={`/citydetails/${a.place_id}`} className="amenity-cards-list">
             <div key={a.name}>
               <div className="ui link cards">
                 <div className="card">
