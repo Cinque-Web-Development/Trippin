@@ -1,0 +1,10 @@
+.hotel-city {
+  text-align: center;
+}
+
+.hotel-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}

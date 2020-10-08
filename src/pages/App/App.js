@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
 import CityDetails from '../../components/CityDetails/CityDetails';
-
+import HotelList from '../../components/HotelList/HotelList'
 import ErrorPage from '../ErrorPage/ErrorPage';
 
 import { getHotels, getRestaurants } from '../../services/google-api'
@@ -45,6 +45,13 @@ const App = () => {
           <CityDetails hotels={hotels} city={city} restaurants={restaurants}/>
         </>
       }>
+      </Route>
+      <Route exact path="/citydetails/hotels" render={() => (
+        <>
+        <NavBar />
+        <HotelList hotels={hotels} city={city}/>
+        </>
+      )}>
       </Route>
 
       <Route path="*" render={({history}) => 
