@@ -14,9 +14,7 @@ app.use(bodyParser.json());
 // app.use(logger('dev'));
 app.use('/api/auth', authRouter);
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`)

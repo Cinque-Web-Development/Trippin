@@ -1,34 +1,34 @@
 import React, { useState } from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from "react-router-dom";
 
 import NavBar from "../../components/NavBar/NavBar";
 import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
-import CityDetails from '../../components/CityDetails/CityDetails';
-import HotelList from '../../components/HotelList/HotelList'
+import CityDetails from "../../components/CityDetails/CityDetails";
+import HotelList from "../../components/HotelList/HotelList";
 
-import LoginPage from '../LoginPage/LoginPage';
-import SignupPage from '../SignupPage/SignupPage';
-import ErrorPage from '../ErrorPage/ErrorPage';
+import LoginPage from "../LoginPage/LoginPage";
+import SignupPage from "../SignupPage/SignupPage";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
-import userService from '../../services/userService';
-import { getHotels, getRestaurants } from '../../services/google-api'
+import userService from "../../services/userService";
+import { getHotels, getRestaurants } from "../../services/google-api";
 
 import "./App.css";
 
 const App = () => {
-  const [user, setUser] = useState('');
-  const [city, setCity] = useState('');
-  const [hotels, setHotels] = useState([])
-  const [restaurants, setRestaurants] = useState([])
+  const [user, setUser] = useState("");
+  const [city, setCity] = useState("");
+  const [hotels, setHotels] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
 
   const handleSearchSubmit = async (query) => {
-    setCity(query)
-    const googleHotels = await getHotels(query)
-    googleHotels.data.results.sort((a, b) => b.rating - a.rating)
-    setHotels(googleHotels.data.results)
-    const googleRestaurants = await getRestaurants(query)
-    googleRestaurants.data.results.sort((a, b) => b.rating - a.rating)
-    setRestaurants(googleRestaurants.data.results)
+    setCity(query);
+    const googleHotels = await getHotels(query);
+    googleHotels.data.results.sort((a, b) => b.rating - a.rating);
+    setHotels(googleHotels.data.results);
+    const googleRestaurants = await getRestaurants(query);
+    googleRestaurants.data.results.sort((a, b) => b.rating - a.rating);
+    setRestaurants(googleRestaurants.data.results);
   };
 
   const handleLogout = () => {
@@ -42,57 +42,63 @@ const App = () => {
 
   return (
     <>
-      <NavBar 
-        handleLogout={handleLogout}
-      />
+      <NavBar handleLogout={handleLogout} />
 
       <Switch>
-        <Route exact path="/" render={() => 
-          <>
-            <SearchLocationInput 
-              handleSearchSubmit={handleSearchSubmit}
-            />
-          </>
-        }>
-        </Route>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <>
+              <SearchLocationInput handleSearchSubmit={handleSearchSubmit} />
+            </>
+          )}
+        ></Route>
 
-        <Route exact path="/citydetails" render={() =>
-          <>
-            <CityDetails 
-              hotels={hotels} 
-              city={city} 
-              restaurants={restaurants}
-            />
-          </>
-        }>
-        </Route>
-        <Route exact path="/citydetails/hotels" render={() => (
-        <>
-        <NavBar />
-        <HotelList hotels={hotels} city={city}/>
-        </>
-      )}>
-      </Route>
+        <Route
+          exact
+          path="/citydetails"
+          render={() => (
+            <>
+              <CityDetails
+                hotels={hotels}
+                city={city}
+                restaurants={restaurants}
+              />
+            </>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/citydetails/hotels"
+          render={() => (
+            <>
+              <HotelList hotels={hotels} city={city} />
+            </>
+          )}
+        ></Route>
 
-        <Route exact path="/login" render={() => 
-          <>
-            <LoginPage 
-              handleSignupOrLogin={handleSignupOrLogin}
-            />
-          </>
-        }></Route>
+        <Route
+          exact
+          path="/login"
+          render={() => (
+            <>
+              <LoginPage handleSignupOrLogin={handleSignupOrLogin} />
+            </>
+          )}
+        ></Route>
 
-        <Route exact path="/signup" render={() => 
-          <>
-            <SignupPage 
-              handleSignupOrLogin={handleSignupOrLogin}
-            />
-          </>
-        }></Route>
+        <Route
+          exact
+          path="/signup"
+          render={() => (
+            <>
+              <SignupPage handleSignupOrLogin={handleSignupOrLogin} />
+            </>
+          )}
+        ></Route>
 
-        <Route path="*" render={({history}) => 
-          <ErrorPage />
-        }></Route>
+        <Route path="*" render={({ history }) => <ErrorPage />}></Route>
       </Switch>
     </>
   );
