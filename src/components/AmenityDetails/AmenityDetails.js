@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Reviews from "../Reviews/Reviews";
+import ReturnHome from '../ReturnHome/ReturnHome';
 // import { getAmenityDetails } from "../../services/google-api";
 import "./AmenityDetails.css";
 import axios from "axios";
@@ -30,7 +31,8 @@ export default function AmenityDetails() {
     getAmenityDetails(id);
   }, [id]);
 
-  return (
+  let amenityDetailsPage = amenityDetails ? (
+
     <div>
       <h1>{amenityDetails.name}</h1>
       <img alt="" src={faker.image.business()}></img>
@@ -40,5 +42,16 @@ export default function AmenityDetails() {
         <Reviews reviews={reviews}/>
       </div>
     </div>
+  )
+  :
+  (
+    <>
+    <ReturnHome />
+    </>
+  )
+    return (
+      <>
+      {amenityDetailsPage}
+      </>
   );
 }
