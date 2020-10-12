@@ -10,6 +10,7 @@ import SearchLocationInput from "../../components/SearchLocationInput/SearchLoca
 import ErrorPage from "../ErrorPage/ErrorPage";
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
+import UserPage from '../UserPage/UserPage'
 
 import userService from "../../services/userService";
 import { getHotels, getRestaurants } from "../../services/google-api";
@@ -41,6 +42,9 @@ const App = ({history}) => {
     setUser(userService.getUser());
   };
 
+
+
+
   return ( 
   <>
     <Switch>
@@ -58,12 +62,12 @@ const App = ({history}) => {
       <Route exact path="/citydetails" render={() => 
         <Layout 
           handleLogout={handleLogout}
-          user={user}
         >
           <CityDetails 
             hotels={hotels}
             city={city}
             restaurants={restaurants}
+            user={user}
             history={history}
             user={user}
           />
@@ -106,6 +110,15 @@ const App = ({history}) => {
             type="Restaurants"
             user={user}
           />
+        </Layout>
+      )}></Route>
+
+<Route exact path="/user/:id" render={() => (
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}  
+        >
+         <UserPage user={user} />
         </Layout>
       )}></Route>
 

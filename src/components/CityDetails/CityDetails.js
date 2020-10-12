@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import faker from "faker";
 
 import Amenities from "../Amenities/Amenities";
@@ -8,9 +8,10 @@ import {startTrip} from '../../services/trip-api';
 
 import "./CityDetails.css";
 
-const CityDetails = ({ history, hotels, city, restaurants, user }) => {
+const CityDetails = ({ hotels, city, restaurants, user }) => {
   const [hotel, setHotel] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     const getHotel = hotels.slice(0, 5);
@@ -31,7 +32,7 @@ const CityDetails = ({ history, hotels, city, restaurants, user }) => {
         {user ? 
           <button onClick={handleStartTrip}>Start My Trip Here!</button>
         :
-        ''
+        <p>NO user</p>
         }
         <div className="amenity-wrapper">
           <Link to='/citydetails/hotels' className="amenity-title"><h2>Hotels</h2></Link>
