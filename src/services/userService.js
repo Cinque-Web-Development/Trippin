@@ -2,7 +2,6 @@ import tokenService from '../services/tokenService';
 const BASE_URL = '/api/auth/';
 
 function signup(user) {
-  console.log(user, "<-- front-end should be user data")
   return fetch(BASE_URL + 'signup', {
     method: 'POST',
     headers: new Headers({'Content-Type': 'application/json'}),
@@ -31,7 +30,6 @@ function logout() {
 }
 
 function login(creds) {
-  console.log(creds)
   return fetch(BASE_URL + 'login', {
     method: 'POST',
     headers: new Headers({'Content-Type': 'application/json'}),

@@ -1,3 +1,5 @@
+import tokenService from '../services/tokenService'
+
 const BASE_URL = '/api/trips/'
 
 export function getAllTrips() {
@@ -6,21 +8,20 @@ export function getAllTrips() {
         return res.json()
     })
     .catch(err => {
-        return err.json()
+        console.log(err)
     })
 }
 
-export function startTrip(tripInfo) {
-    console.log(tripInfo)
+export function startTrip(city) {
     return fetch(`${BASE_URL}`, {
-        method: 'POST',
-        headers: new Headers({'Content-Type': 'application/json'}),
-        body: JSON.stringify(tripInfo)
-    })
+        method:'POST',
+        headers: new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()}),
+        body: JSON.stringify({city})
+    }, {mode:'cors'})
     .then(res => {
-        return res.json()
+        res.json()
     })
     .catch(err => {
-        return err.json()
+        console.log(err)
     })
 }
