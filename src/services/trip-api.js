@@ -17,10 +17,5 @@ export function startTrip(tripInfo) {
         headers: new Headers({'Content-Type': 'application/json'}),
         body: JSON.stringify(tripInfo)
     })
-    .then(res => {
-        return res.json()
-    })
-    .catch(err => {
-        return err.json()
-    })
+    .then(res =>  res.json())
 }

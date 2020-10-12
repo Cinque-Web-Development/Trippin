@@ -43,6 +43,8 @@ const App = ({
     setUser(userService.getUser());
   };
 
+
+
   return ( 
   <>
     <Switch>
@@ -60,12 +62,12 @@ const App = ({
       <Route exact path="/citydetails" render={() => 
         <Layout 
           handleLogout={handleLogout}
-          user={user}
         >
           <CityDetails 
             hotels={hotels}
             city={city}
             restaurants={restaurants}
+            user={user}
             history={history}
           />
         </Layout>
