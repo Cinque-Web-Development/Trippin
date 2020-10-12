@@ -10,6 +10,7 @@ import SearchLocationInput from "../../components/SearchLocationInput/SearchLoca
 import ErrorPage from "../ErrorPage/ErrorPage";
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
+import UserPage from '../UserPage/UserPage'
 
 import userService from "../../services/userService";
 import { getHotels, getRestaurants } from "../../services/google-api";
@@ -42,6 +43,7 @@ const App = ({
   const handleSignupOrLogin = () => {
     setUser(userService.getUser());
   };
+
 
 
 
@@ -108,6 +110,15 @@ const App = ({
             city={city} 
             type="Restaurants"
           />
+        </Layout>
+      )}></Route>
+
+<Route exact path="/user/:id" render={() => (
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}  
+        >
+         <UserPage user={user} />
         </Layout>
       )}></Route>
 
