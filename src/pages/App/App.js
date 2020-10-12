@@ -17,10 +17,8 @@ import { getHotels, getRestaurants } from "../../services/google-api";
 
 import "./App.css";
 
-const App = ({
-  history
-}) => {
-  const [user, setUser] = useState("");
+const App = ({history}) => {
+  const [user, setUser] = useState();
   const [city, setCity] = useState("");
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
@@ -44,9 +42,6 @@ const App = ({
     setUser(userService.getUser());
   };
 
-
-
-
   return ( 
   <>
     <Switch>
@@ -64,6 +59,7 @@ const App = ({
       <Route exact path="/citydetails" render={() => 
         <Layout 
           handleLogout={handleLogout}
+          user={user}
         >
           <CityDetails 
             hotels={hotels}
@@ -109,11 +105,12 @@ const App = ({
           <AmenityDetails 
             city={city} 
             type="Restaurants"
+            user={user}
           />
         </Layout>
       )}></Route>
 
-<Route exact path="/user/:id" render={() => (
+      <Route exact path="/user/:id" render={() => (
         <Layout 
           handleLogout={handleLogout}
           user={user}  
@@ -145,8 +142,13 @@ const App = ({
         </Layout>
       )}></Route>
 
-      <Route path = "*"render = {() => 
-        <ErrorPage />
+      <Route path = "*" render = {() => 
+        <Layout
+          handleLogout={handleLogout}
+          user={user}
+        >
+          <ErrorPage />
+        </Layout>
       }></Route>
     </Switch> 
   </>

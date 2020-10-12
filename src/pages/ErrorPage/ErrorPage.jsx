@@ -6,7 +6,7 @@ const ErrorPage = () => {
         <>
             <div id='errorPage'>
                 <div>
-                    <img alt='whereGif' src="404.gif"></img>
+                    <img src="https://imgur.com/a/uAwTkaP" alt='whereGif'></img>
                 </div>
                 <main>
                     <h1>404 Error</h1>

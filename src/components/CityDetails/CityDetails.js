@@ -20,10 +20,8 @@ const CityDetails = ({ hotels, city, restaurants, user }) => {
     setHotel(getHotel);
   }, [hotels, restaurants]);
 
-  const handleStartTrip = (city, userId) => {
-    const tripInfo = {city, user: userId}
-    startTrip(tripInfo)
-    history.push(`/user/${userId}`)
+  const handleStartTrip = () => {
+    startTrip(city)
   }
 
   let cityDetailsPage = city ? (
@@ -32,7 +30,7 @@ const CityDetails = ({ hotels, city, restaurants, user }) => {
         <img className="city-detail-img" alt="" src={faker.image.city()}></img>
         <p className="city-description">{faker.lorem.paragraph()}</p>
         {user ? 
-          <button onClick={() => handleStartTrip(city, user._id)}>Start My Trip Here!</button>
+          <button onClick={handleStartTrip}>Start My Trip Here!</button>
         :
         <p>NO user</p>
         }

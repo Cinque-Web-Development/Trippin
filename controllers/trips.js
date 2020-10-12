@@ -13,6 +13,8 @@ function getAll(req, res) {
 }
 
 function create(req, res) {
+    req.body.user = req.user._id
+    console.log(req.body, req.user)
     Trip.create(req.body)
     .then(trip => res.json(trip))
     .catch(err => res.json(err))
