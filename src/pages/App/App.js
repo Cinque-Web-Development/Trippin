@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import NavBar from "../../components/NavBar/NavBar";
-import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
-import CityDetails from "../../components/CityDetails/CityDetails";
 import AmenityList from "../../components/AmenityList/AmenityList";
 import AmenityDetails from '../../components/AmenityDetails/AmenityDetails';
+import CityDetails from "../../components/CityDetails/CityDetails";
+import Layout from "../../components/Layout/Layout";
+import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
 
+import ErrorPage from "../ErrorPage/ErrorPage";
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
-import ErrorPage from "../ErrorPage/ErrorPage";
 
 import userService from "../../services/userService";
 import { getHotels, getRestaurants } from "../../services/google-api";
@@ -45,96 +45,98 @@ const App = ({
 
   return ( 
   <>
-    <NavBar user = {
-      user
-    }
-    handleLogout = {
-      handleLogout
-    }
-    />
+    <Switch>
+      <Route exact path = "/" render = {() => 
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}
+        >
+          <SearchLocationInput 
+            handleSearchSubmit = {handleSearchSubmit}
+          />
+        </Layout>
+      }></Route>
 
-    <Switch >
-    <Route exact path = "/"
-    render = {
-      () => ( <>
-        <SearchLocationInput handleSearchSubmit = {
-          handleSearchSubmit
-        }
-        /> </>
-      )
-    } >
-    </Route>
-
-    <Route
-      exact path="/citydetails"
-      render={() => (
-        <>
-          <CityDetails
+      <Route exact path="/citydetails" render={() => 
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}
+        >
+          <CityDetails 
             hotels={hotels}
             city={city}
             restaurants={restaurants}
+            history={history}
           />
-        </>
-      )}
-    ></Route>
-    <Route
-      exact path="/citydetails/hotels"
-      render={() => (
-        <>
-          <AmenityList amenity={hotels} city={city} type="Hotels"/>
-        </>
-      )}
-    ></Route>
-    <Route
-      exact path="/citydetails/restaurants"
-      render={() => (
-        <>
-          <AmenityList amenity={restaurants} city={city} type="Restaurants"/>
-        </>
-      )}
-    ></Route>
-    <Route
-      exact path="/citydetails/:id"
-      render={() => (
-        <>
-          <AmenityDetails city={city} type="Restaurants"/>
-        </>
-      )}
-    ></Route>
+        </Layout>
+      }></Route>
 
-    <Route exact path = "/login"
-    render = {
-      () => ( <>
-        <LoginPage history = {
-          history
-        }
-        handleSignupOrLogin = {
-          handleSignupOrLogin
-        }
-        /> </>
-      )
-    } >
-    </Route>
+      <Route exact path="/citydetails/hotels" render={() => 
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}
+        >
+          <AmenityList 
+            amenity={hotels} 
+            city={city} 
+            type="Hotels"
+          />
+        </Layout>
+      }></Route>
 
-    <Route exact path = "/signup"
-    render = {
-      () => ( <>
-        <SignupPage history = {
-          history
-        }
-        handleSignupOrLogin = {
-          handleSignupOrLogin
-        }
-        /> </>
-      )
-    } >
-    </Route>
+      <Route exact path="/citydetails/restaurants" render={() => (
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}
+        >
+          <AmenityList 
+            amenity={restaurants} 
+            city={city} 
+            type="Restaurants"
+          />
+        </Layout>
+      )}></Route>
 
-    <Route path = "*"
-    render = {
-      () => < ErrorPage />
-    } > </Route> </Switch> 
-    </>
+      <Route exact path="/citydetails/:id" render={() => (
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}  
+        >
+          <AmenityDetails 
+            city={city} 
+            type="Restaurants"
+          />
+        </Layout>
+      )}></Route>
+
+      <Route exact path = "/login" render = {() => (
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}
+        >
+          <LoginPage 
+            history = {history}
+            handleSignupOrLogin = {handleSignupOrLogin}
+          />
+        </Layout>
+      )}></Route>
+
+      <Route exact path = "/signup" render = {() => ( 
+        <Layout 
+          handleLogout={handleLogout}
+        >
+          <SignupPage 
+            history = {history}
+            handleSignupOrLogin = {handleSignupOrLogin}
+          />
+        </Layout>
+      )}></Route>
+
+      <Route path = "*"render = {() => 
+        <ErrorPage />
+      }></Route>
+    </Switch> 
+  </>
   );
 };
 
