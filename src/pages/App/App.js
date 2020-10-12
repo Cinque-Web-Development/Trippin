@@ -42,9 +42,6 @@ const App = ({history}) => {
     setUser(userService.getUser());
   };
 
-
-
-
   return ( 
   <>
     <Switch>
@@ -62,6 +59,7 @@ const App = ({history}) => {
       <Route exact path="/citydetails" render={() => 
         <Layout 
           handleLogout={handleLogout}
+          user={user}
         >
           <CityDetails 
             hotels={hotels}
@@ -69,7 +67,6 @@ const App = ({history}) => {
             restaurants={restaurants}
             user={user}
             history={history}
-            user={user}
           />
         </Layout>
       }></Route>
@@ -113,7 +110,7 @@ const App = ({history}) => {
         </Layout>
       )}></Route>
 
-<Route exact path="/user/:id" render={() => (
+      <Route exact path="/user/:id" render={() => (
         <Layout 
           handleLogout={handleLogout}
           user={user}  
@@ -146,7 +143,10 @@ const App = ({history}) => {
       )}></Route>
 
       <Route path = "*" render = {() => 
-        <Layout>
+        <Layout
+          handleLogout={handleLogout}
+          user={user}
+        >
           <ErrorPage />
         </Layout>
       }></Route>
