@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
 const destinationSchema = new mongoose.Schema({
-    city: String,
-    state: String,
-    country: String,
+    location: String,
     date: Date,
     attractions: [{
         type: mongoose.Schema.Types.ObjectId,

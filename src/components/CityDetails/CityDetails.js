@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import faker from "faker";
+
 import Amenities from "../Amenities/Amenities";
 import ReturnHome from '../ReturnHome/ReturnHome';
-import faker from "faker";
-import { Link } from "react-router-dom";
+import {startTrip} from '../../services/trip-api';
 
 import "./CityDetails.css";
 
-const CityDetails = ({ hotels, city, restaurants }) => {
+const CityDetails = ({ history, hotels, city, restaurants, user }) => {
   const [hotel, setHotel] = useState([]);
   const [restaurant, setRestaurant] = useState([]);
 
@@ -17,12 +19,22 @@ const CityDetails = ({ hotels, city, restaurants }) => {
     setHotel(getHotel);
   }, [hotels, restaurants]);
 
+  const handleStartTrip = (city, userId) => {
+    const tripInfo = {city, user: userId}
+    startTrip(tripInfo)
+    history.push(`/user/${user.id}`)
+  }
+
   let cityDetailsPage = city ? (
-    
       <div className="CityDetails pusher">
         <h1 className="city-name">{city}</h1>
         <img className="city-detail-img" alt="" src={faker.image.city()}></img>
         <p className="city-description">{faker.lorem.paragraph()}</p>
+        {user ? 
+          <button onClick={handleStartTrip(city, user._id)}>Start My Trip Here!</button>
+        :
+        ''
+        }
         <div className="amenity-wrapper">
           <Link to='/citydetails/hotels' className="amenity-title"><h2>Hotels</h2></Link>
           {hotel.length ? (

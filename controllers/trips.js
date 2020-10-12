@@ -1,9 +1,16 @@
 const Trip = require('../models/trip');
 
 module.exports = {
+    getAll,
     create,
     delete:deleteOne
 };
+
+function getAll(req, res) {
+    Trip.find()
+    .then(trips => res.json(trips))
+    .catch(err => res.json(err))
+}
 
 function create(req, res) {
     Trip.create(req.body)
