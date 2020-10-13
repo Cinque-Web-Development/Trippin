@@ -1,0 +1,16 @@
+.LandingPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("https://i.imgur.com/ha7xE5J.jpg") no-repeat center center fixed;
+    height: 87vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.landing-text {
+    text-align: center;
+    padding-top: 15px;
+}

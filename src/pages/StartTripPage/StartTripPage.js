@@ -3,10 +3,10 @@ import './StartTripPage.css';
 
 export default function StartTripPage({city}) {
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems, options);
-      });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     var elems = document.querySelectorAll('.datepicker');
+    //     var instances = M.Datepicker.init(elems, options);
+    //   });
 
     return (
         <form>
