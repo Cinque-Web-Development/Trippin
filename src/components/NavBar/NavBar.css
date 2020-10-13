@@ -3,6 +3,22 @@
   height: 85px;
 }
 
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .trippin-logo {
   width: 100px;
+}
+
+#brand-logo {
+  display: flex;
+}
+
+#app-name {
+  font-family: 'Love Ya Like A Sister', sans-serif;
+  color: rgb(221, 107, 45);
+  align-self: center;
 }

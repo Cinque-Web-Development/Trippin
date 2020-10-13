@@ -7,7 +7,10 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       <nav className="nav-bar">
         <div className="nav-wrapper">
-        <a href="/" className="brand-logo left"><img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img></a>
+        <Link to="/" id="brand-logo" className="left">
+          <img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img>
+          <h1 id="app-name">Trippin'</h1>
+          </Link>
           <ul className="right">
             <li>
               <a href="/">Start Trip</a>
@@ -26,7 +29,10 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       <nav className="nav-bar">
         <div className="nav-wrapper">
-        <a href="/" className="brand-logo left"><img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img></a>
+        <Link to="/" id="brand-logo" className="left">
+          <img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img>
+          <h1 id="app-name">Trippin'</h1>
+          </Link>
           <ul className="right">
             <li>
               <a href="/">Start Trip</a>
