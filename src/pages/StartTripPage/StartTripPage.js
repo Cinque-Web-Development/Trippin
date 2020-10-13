@@ -1,23 +1,21 @@
-import React from 'react';
-import './StartTripPage.css';
+import React from "react";
+import "./StartTripPage.css";
+import { DatePicker } from "react-materialize";
+import M from "materialize-css";
 
-export default function StartTripPage({city}) {
+export default function StartTripPage({ city }) {
+   
+  return (
+    <>
+      <h1>Start your trip to {city}</h1>
 
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var elems = document.querySelectorAll('.datepicker');
-    //     var instances = M.Datepicker.init(elems, options);
-    //   });
-
-    return (
-        <form>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input value={city} id="trip-name" type="text" class="validate"></input>
-                    <label class="active" for="trip-name">First Name</label>
-                </div>
-            </div>
-            <input type="text" class="datepicker"></input>
-            <input type="text" class="datepicker"></input>
-        </form>
-    )
+      <DatePicker 
+      options={{
+          maxDate:null,
+          minDate:null
+      }}
+      />
+      <DatePicker />
+    </>
+  );
 }
