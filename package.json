@@ -14,10 +14,12 @@
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
+    "materialize-css": "^1.0.0",
     "mongoose": "^5.10.8",
     "morgan": "^1.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-materialize": "^3.9.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
