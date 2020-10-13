@@ -20,19 +20,15 @@ const CityDetails = ({ hotels, city, restaurants, user }) => {
     setHotel(getHotel);
   }, [hotels, restaurants]);
 
-  const handleStartTrip = () => {
-    startTrip(city)
-  }
-
   let cityDetailsPage = city ? (
       <div className="CityDetails pusher">
         <h1 className="city-name">{city}</h1>
         <img className="city-detail-img" alt="" src={faker.image.city()}></img>
         <p className="city-description">{faker.lorem.paragraph()}</p>
         {user ? 
-          <button onClick={handleStartTrip}>Start My Trip Here!</button>
+          <Link to="/starttrip">Start a trip to {city}</Link>
         :
-        <p>NO user</p>
+        ''
         }
         <div className="amenity-wrapper">
           <Link to='/citydetails/hotels' className="amenity-title"><h2>Hotels</h2></Link>

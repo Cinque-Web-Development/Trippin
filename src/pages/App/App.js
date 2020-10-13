@@ -5,12 +5,13 @@ import AmenityList from "../../components/AmenityList/AmenityList";
 import AmenityDetails from '../../components/AmenityDetails/AmenityDetails';
 import CityDetails from "../../components/CityDetails/CityDetails";
 import Layout from "../../components/Layout/Layout";
-import SearchLocationInput from "../../components/SearchLocationInput/SearchLocationInput";
 
 import ErrorPage from "../ErrorPage/ErrorPage";
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
-import UserPage from '../UserPage/UserPage'
+import UserPage from '../UserPage/UserPage';
+import StartTripPage from '../StartTripPage/StartTripPage';
+import LandingPage from '../LandingPage/LandingPage';
 
 import userService from "../../services/userService";
 import { getHotels, getRestaurants } from "../../services/google-api";
@@ -50,7 +51,7 @@ const App = ({history}) => {
           handleLogout={handleLogout}
           user={user}
         >
-          <SearchLocationInput 
+          <LandingPage
             handleSearchSubmit = {handleSearchSubmit}
           />
         </Layout>
@@ -116,6 +117,15 @@ const App = ({history}) => {
           user={user}  
         >
          <UserPage user={user} />
+        </Layout>
+      )}></Route>
+
+      <Route exact path="/starttrip" render={() => (
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}  
+        >
+         <StartTripPage user={user} city={city}/>
         </Layout>
       )}></Route>
 
