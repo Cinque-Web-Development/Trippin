@@ -10,13 +10,14 @@ export default function StartTripPage({ city }) {
   const [lng, setLng] = useState('')
 
   useEffect(() => {
-    axios.get('/citycooord', {
+    axios.get('/citycoord', {
       params: {
         city: city
       }
     })
     .then((response) => {
-      console.log(response.data.result)
+      setLat(response.data.results[0].geometry.location.lat);
+      setLng(response.data.results[0].geometry.location.lng);
     })
   }, [city])
    
@@ -31,7 +32,10 @@ export default function StartTripPage({ city }) {
       }}
       />
       <DatePicker />
-      <GoogleMaps />
+      <GoogleMaps 
+        lat={lat}
+        lng={lng}
+      />
     </>
   );
 }
