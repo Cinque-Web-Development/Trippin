@@ -10,8 +10,8 @@ export default function GoogleMaps({lat, lng}) {
       <GoogleMap 
       defaultZoom={10}
       defaultCenter={{
-        lat: lat,
-        lng: lng
+        lat: 32.7767,
+        lng: -96.7970
       }}
       />
       )
