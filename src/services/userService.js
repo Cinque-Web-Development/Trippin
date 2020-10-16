@@ -8,7 +8,6 @@ function signup(user) {
     body: JSON.stringify(user)
   })
   .then(res => {
-    console.log(res, '<-- response object')
     return res.json();
   })
   .then(json => {

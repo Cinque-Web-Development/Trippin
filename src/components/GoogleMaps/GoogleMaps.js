@@ -10,8 +10,8 @@ export default function GoogleMaps({lat, lng}) {
       <GoogleMap 
       defaultZoom={10}
       defaultCenter={{
-        lat: 32.7767,
-        lng: -96.7970
+        lat: lat,
+        lng: lng
       }}
       />
       )
@@ -19,7 +19,7 @@ export default function GoogleMaps({lat, lng}) {
     
     const WrappedMap = withScriptjs(withGoogleMap(Map));
   return (
-    <div style={{width: '100vw', height: '100vh'}}>
+    <div style={{width: '80vw', height: '100vh'}}>
         <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
         loadingElement={<div style={{height: '100%'}} />}
         containerElement={<div style={{height: '400px'}} />}
