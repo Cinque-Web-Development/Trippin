@@ -1,18 +1,18 @@
 .trip-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
   margin-top: 30px;
+  margin-left: 15px;
 }
 
 .trip-dates {
   grid-column: 1/2;
-  grid-row: 1/2;
-  width: 40vw;
+  width: 30vw;
+  padding-right: 20px;
 }
 
 .city-map {
   grid-column: 2/2;
-  grid-row: 1/2;
   height: 100vh;
 }
