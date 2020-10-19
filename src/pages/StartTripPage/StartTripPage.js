@@ -25,22 +25,21 @@ export default function StartTripPage({ city }) {
     <div >
       <h1>Start your trip to {city}</h1>
       <div className="trip-page">
-      <div className="trip-dates">
-      <h3>Start Date:</h3><DatePicker 
-      options={{
-          maxDate:null,
-          minDate:null
-      }}
-      />
-      <h3>End Trip:</h3><DatePicker />
-      </div>
-      <div className="city-map">
-      <GoogleMaps 
-        lat={lat}
-        lng={lng}
-      />
-      </div>
-
+        <div className="trip-dates">
+          <h3>Start Date:</h3><DatePicker 
+          options={{
+              maxDate:null,
+              minDate:null
+          }}
+          />
+          <h3>End Trip:</h3><DatePicker />
+        </div>
+        <div className="city-map">
+          <GoogleMaps 
+            lat={lat}
+            lng={lng}
+          />
+        </div>
       </div>
     </div>
   );
