@@ -5,11 +5,11 @@ export default function Reviews({ reviews }) {
   return (
     <div className="ui cards review-card">
     {reviews.map((r) => 
-      <div class="card" id="review">
-        <div class="content" id="review">
-          <div class="header">{r.author_name}</div>
-          <div class="meta">{r.relative_time_description}</div>
-          <div class="description">
+      <div className="card" id="review" key={r.time}>
+        <div className="content" id="review">
+          <div className="header">{r.author_name}</div>
+          <div className="meta">{r.relative_time_description}</div>
+          <div className="description">
            {r.text}
           </div>
         </div>

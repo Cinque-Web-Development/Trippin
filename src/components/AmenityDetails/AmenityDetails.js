@@ -4,7 +4,6 @@ import Reviews from "../Reviews/Reviews";
 import ReturnHome from '../ReturnHome/ReturnHome';
 // import { getAmenityDetails } from "../../services/google-api";
 import "./AmenityDetails.css";
-import axios from "axios";
 import faker from "faker";
 import {getAmenityDetails} from '../../services/google-api'
 
@@ -15,7 +14,10 @@ export default function AmenityDetails() {
 
   useEffect(() => {
     getAmenityDetails(id)
-    .then(res => setAmenityDetails(res.data.result))
+    .then(res => {
+      setAmenityDetails(res.data.result)
+      setReviews(res.data.result.reviews)
+    })
   }, []);
 
   let amenityDetailsPage = amenityDetails ? (
@@ -31,7 +33,7 @@ export default function AmenityDetails() {
   :
   (
     <>
-    <ReturnHome />
+      <ReturnHome />
     </>
   )
     return (
