@@ -6,6 +6,7 @@ import ReturnHome from '../ReturnHome/ReturnHome';
 import "./AmenityDetails.css";
 import axios from "axios";
 import faker from "faker";
+import {getAmenityDetails} from '../../services/google-api'
 
 export default function AmenityDetails() {
   const [amenityDetails, setAmenityDetails] = useState([]);
@@ -13,23 +14,9 @@ export default function AmenityDetails() {
   const { id } = useParams();
 
   useEffect(() => {
-    const getAmenityDetails = async (id) => {
-      axios
-        .get("/citydetails/:id", {
-          params: {
-            id: id,
-          },
-        })
-        .then(function (response) {
-          console.log(response.data.result);
-          setAmenityDetails(response.data.result);
-
-          setReviews(response.data.result.reviews);
-        })
-        .catch((err) => console.log(err));
-    };
-    getAmenityDetails(id);
-  }, [id]);
+    getAmenityDetails(id)
+    .then(res => setAmenityDetails(res.data.result))
+  }, []);
 
   let amenityDetailsPage = amenityDetails ? (
 

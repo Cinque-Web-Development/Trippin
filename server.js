@@ -18,13 +18,6 @@ app.use(logger('dev'))
 app.use('/api/auth/', authRouter)
 app.use('/api/trips/', tripRouter)
 
-app.use('/citycoord', (req, res) => {
-  axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.query.city}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`)
-  .then((response) => {
-    res.send(response.data);
-  })
-  .catch((err) => console.log(err));
-})
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`)
