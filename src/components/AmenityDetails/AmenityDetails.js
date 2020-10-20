@@ -21,7 +21,7 @@ export default function AmenityDetails() {
       setAmenityDetails(res.data.result)
       setReviews(res.data.result.reviews)
     })
-  }, []);
+  }, [id]);
 
   let amenityDetailsPage = amenityDetails ? (
 

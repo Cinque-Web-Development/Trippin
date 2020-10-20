@@ -116,7 +116,7 @@ const App = ({history}) => {
           handleLogout={handleLogout}
           user={user}  
         >
-         <UserPage user={user} />
+         <UserPage />
         </Layout>
       )}></Route>
 

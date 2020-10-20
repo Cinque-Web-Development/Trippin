@@ -50,5 +50,5 @@ function createJWT(user) {
 
 function show(req, res) {
   User.findById(req.params.id)
-  .then(res => res.json());
+  .then(user => res.json(user));
 }
