@@ -13,7 +13,6 @@ function getAll(req, res) {
 }
 
 function create(req, res) {
-    console.log(req.body)
     Trip.create({
         start: req.body.formData.start,
         end: req.body.formData.end,
