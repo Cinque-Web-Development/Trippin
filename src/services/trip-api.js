@@ -12,11 +12,11 @@ export function getAllTrips() {
     })
 }
 
-export function startTrip(city) {
+export function startTrip(formData) {
     return fetch(`${BASE_URL}`, {
         method:'POST',
         headers: new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()}),
-        body: JSON.stringify({city})
+        body: JSON.stringify({formData})
     }, {mode:'cors'})
     .then(res => {
         res.json()
