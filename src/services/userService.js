@@ -24,6 +24,11 @@ function getUser() {
   return tokenService.getUserFromToken();
 }
 
+function getUserById(id) {
+  return fetch(BASE_URL + `user/${id}`)
+  .then(res => res.json())
+}
+
 function logout() {
   tokenService.removeToken();
 }
@@ -45,5 +50,6 @@ export default {
   signup,
   getUser,
   logout,
-  login
+  login,
+  getUserById
 };
