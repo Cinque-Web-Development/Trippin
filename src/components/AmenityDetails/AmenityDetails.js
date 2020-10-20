@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import faker from "faker";
+
 import Reviews from "../Reviews/Reviews";
 import ReturnHome from '../ReturnHome/ReturnHome';
-// import { getAmenityDetails } from "../../services/google-api";
-import "./AmenityDetails.css";
-import faker from "faker";
+
 import {getAmenityDetails} from '../../services/google-api'
+
+import "./AmenityDetails.css";
 
 export default function AmenityDetails() {
   const [amenityDetails, setAmenityDetails] = useState([]);
@@ -15,6 +17,7 @@ export default function AmenityDetails() {
   useEffect(() => {
     getAmenityDetails(id)
     .then(res => {
+      console.log(res.data.result)
       setAmenityDetails(res.data.result)
       setReviews(res.data.result.reviews)
     })

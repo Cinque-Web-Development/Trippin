@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const destinationSchema = new mongoose.Schema({
+    location: String,
+    attractions: {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Attraction'
+    },
+})
+
 const tripSchema = new mongoose.Schema({
     name: String,
     start: Date,
@@ -8,10 +16,7 @@ const tripSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    destinations: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Destination',
-    }],
+    destinations: [destinationSchema],
 }, {
     timestamps:true
 });

@@ -13,10 +13,21 @@ function getAll(req, res) {
 }
 
 function create(req, res) {
-    req.body.user = req.user._id
-    console.log(req.body, req.user)
-    Trip.create(req.body)
-    .then(trip => res.json(trip))
+    console.log(req.body)
+    Trip.create({
+        start: req.body.formData.start,
+        end: req.body.formData.end,
+        user: req.user._id
+    })
+    .then(trip => {
+        trip.destinations.push({location: req.body.formData.destination})
+        trip.save()
+        return trip
+    })
+    .then(trip => {
+        console.log(trip)
+        res.json(trip)
+    })
     .catch(err => res.json(err))
 }
 

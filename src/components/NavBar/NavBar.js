@@ -13,7 +13,7 @@ const NavBar = ({ user, handleLogout }) => {
           </Link>
           <ul className="right">
             <li>
-              <a href="/">Start Trip</a>
+              <Link to="/">Start Trip</Link>
             </li>
             <li>
               <Link to={`/user/${user._id}`}>Welcome, {user.name}</Link>
