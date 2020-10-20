@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from "react";
+import {useHistory} from 'react-router-dom'
 import "./StartTripPage.css";
 import { DatePicker } from "react-materialize";
 import M from "materialize-css";
 import GoogleMaps from '../../components/GoogleMaps/GoogleMaps'
-import axios from 'axios'
 import {startTrip} from '../../services/trip-api'
 
 import {getCityCoords} from '../../services/google-api'
 
 const todaysDate = new Date()
 
-export default function StartTripPage({ city }) {
+export default function StartTripPage({ user, city }) {
+  const history = useHistory()
   const [lat, setLat] = useState('')
   const [lng, setLng] = useState('')
   const [formData, setFormData] = useState({
@@ -36,6 +37,7 @@ export default function StartTripPage({ city }) {
    
   const handleStartTrip = () => {
     startTrip(formData)
+    history.push(`/user/${user._id}`)
   }
 
   return (
