@@ -33,9 +33,9 @@
 
 .city-description { max-width: 85vw; }
 
-#sidebar {
-  display: flex;
-  align-items: center;
+#start-trip-link {
+  margin-bottom: 20px;
+
 }
 
 

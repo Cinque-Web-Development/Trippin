@@ -24,7 +24,7 @@ const CityDetails = ({ hotels, city, restaurants, user }) => {
         <img className="city-detail-img" alt="" src={faker.image.city()}></img>
         <p className="city-description">{faker.lorem.paragraph()}</p>
         {user ? 
-          <Link to="/starttrip">Start a trip to {city}</Link>
+          <Link to="/starttrip" className="ui blue button" id="start-trip-link">Start a trip to {city}</Link>
         :
         ''
         }

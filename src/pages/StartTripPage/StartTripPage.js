@@ -4,7 +4,8 @@ import "./StartTripPage.css";
 import { DatePicker } from "react-materialize";
 import M from "materialize-css";
 import GoogleMaps from '../../components/GoogleMaps/GoogleMaps'
-import {startTrip} from '../../services/trip-api'
+import {startTrip} from '../../services/trip-api';
+import ReturnHome from '../../components/ReturnHome/ReturnHome';
 
 import {getCityCoords} from '../../services/google-api'
 
@@ -40,7 +41,7 @@ export default function StartTripPage({ user, city }) {
     history.push(`/user/${user._id}`)
   }
 
-  return (
+  let tripPage = city ? (
     <div>
       <h1>Start your trip to {city}</h1>
       <div className="trip-page">
@@ -60,6 +61,7 @@ export default function StartTripPage({ user, city }) {
             minDate:todaysDate
           }}
           />
+          <button onClick={handleStartTrip}>Start Trip!</button>
         </div>
         <div className="city-map">
           <GoogleMaps 
@@ -67,8 +69,16 @@ export default function StartTripPage({ user, city }) {
             lng={lng}
           />
         </div>
-        <button onClick={handleStartTrip}>Start Trip!</button>
       </div>
     </div>
+  ) : (
+    <>
+      <ReturnHome />
+    </>
+  )
+  return (
+    <>
+    {tripPage}
+    </>
   );
 }
