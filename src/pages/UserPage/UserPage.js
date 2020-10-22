@@ -7,7 +7,7 @@ import userService from "../../services/userService";
 import UserTripCard from "../../components/UserTripCard/UserTripCard";
 import "./UserPage.css";
 
-export default function UserPage() {
+export default function UserPage({handleGetTripDetails}) {
   const [user, setUser] = useState();
   const [trips, setTrips] = useState([]);
   const { id } = useParams();
@@ -31,7 +31,11 @@ export default function UserPage() {
     <div>
       <h1 className="user-name">{user.name}</h1>
       {trips.map((trip) => (
-        <UserTripCard trip={trip} handleDeleteTrip={handleDeleteTrip}/>
+        <UserTripCard 
+          trip={trip} 
+          handleDeleteTrip={handleDeleteTrip}
+          handleGetTripDetails={handleGetTripDetails}
+          />
       ))}
     </div>
   ) : (
