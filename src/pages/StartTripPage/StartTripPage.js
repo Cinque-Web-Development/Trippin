@@ -22,11 +22,13 @@ export default function StartTripPage({ user, city }) {
   })
 
   useEffect(() => {
+    // setFormData({...formData, destination: city})
     getCityCoords(city)
     .then((response) => {
       setLat(response.data.results[0].geometry.location.lat);
       setLng(response.data.results[0].geometry.location.lng);
     })
+    console.log(formData)
   }, [city])
 
   const handleStartDateChange = (e) => {
@@ -37,6 +39,7 @@ export default function StartTripPage({ user, city }) {
   }
    
   const handleStartTrip = () => {
+    
     startTrip(formData)
     history.push(`/user/${user._id}`)
   }
