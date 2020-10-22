@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { getUserTrips } from "../../services/trip-api";
+import { getUserTrips, deleteTrip } from "../../services/trip-api";
 import userService from "../../services/userService";
 
 import UserTripCard from "../../components/UserTripCard/UserTripCard";
@@ -22,11 +22,16 @@ export default function UserPage() {
     fetchUserData();
   }, [id]);
 
+  const handleDeleteTrip = (id) => {
+    deleteTrip(id)
+    setTrips(trips.filter(trip => trip._id !== id))
+  }
+
   return user ? (
     <div>
       <h1 className="user-name">{user.name}</h1>
       {trips.map((trip) => (
-        <UserTripCard trip={trip} />
+        <UserTripCard trip={trip} handleDeleteTrip={handleDeleteTrip}/>
       ))}
     </div>
   ) : (

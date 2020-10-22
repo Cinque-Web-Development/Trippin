@@ -1,8 +1,12 @@
 import React from "react";
-import "./UserTripCard.css";
 import {Link} from 'react-router-dom'
 
-export default function UserTripCard({ trip }) {
+import "./UserTripCard.css";
+
+export default function UserTripCard({ trip, handleDeleteTrip }) {
+
+  
+
   return (
     <div className="ui cards">
       <div className="card">
@@ -15,7 +19,7 @@ export default function UserTripCard({ trip }) {
           </div>
           <br/>
           <Link to={`/edittrip/${trip._id}`} className="ui left blue button">Edit</Link>
-          <button className="ui right red button">Delete</button>
+          <button className="ui right red button" onClick={() => handleDeleteTrip(trip._id)}>Delete</button>
         </div>
       </div>
     </div>
