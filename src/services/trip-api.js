@@ -15,5 +15,14 @@ export function startTrip(formData) {
         body: JSON.stringify({formData})
     }, {mode:'cors'})
     .then(res => res.json())
-    .catch(err => err.json())
+    .catch(err => console.log(err))
+}
+
+export function deleteTrip(id) {
+    return fetch(`${BASE_URL}${id}`, {
+        method:'DELETE',
+        headers: new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()}),
+    })
+    .then(res => res.json())
+    .catch(err => console.log(err))
 }
