@@ -15,8 +15,8 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(logger('dev'))
 
-app.use('/api/auth/', authRouter)
-app.use('/api/trips/', tripRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/trips', tripRouter)
 
 
 app.listen(port, () => {

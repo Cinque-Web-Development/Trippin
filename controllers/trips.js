@@ -1,13 +1,14 @@
 const Trip = require('../models/trip');
 
 module.exports = {
-    getAll,
+    getUserTrips,
     create,
-    delete:deleteOne
+    delete:deleteOne,
+    update
 };
 
-function getAll(req, res) {
-    Trip.find()
+function getUserTrips(req, res) {
+    Trip.find({user:req.params.id})
     .then(trips => res.json(trips))
     .catch(err => res.json(err))
 }
@@ -32,6 +33,12 @@ function create(req, res) {
 
 function deleteOne(req, res) {
     Trip.findByIdAndDelete(req.params.id)
+    .then(trip => res.json(trip))
+    .catch(err => res.json(err))
+}
+
+function update(req, res) {
+    Trip.findByIdAndUpdate(req.params.id, req.body)
     .then(trip => res.json(trip))
     .catch(err => res.json(err))
 }
