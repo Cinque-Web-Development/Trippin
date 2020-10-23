@@ -4,9 +4,6 @@ import {Link} from 'react-router-dom'
 import "./UserTripCard.css";
 
 export default function UserTripCard({ trip, handleDeleteTrip }) {
-
-  
-
   return (
     <div className="ui cards">
       <div className="card">

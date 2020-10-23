@@ -38,7 +38,7 @@ function deleteOne(req, res) {
 }
 
 function update(req, res) {
-    Trip.findByIdAndUpdate(req.params.id, req.body)
+    Trip.findByIdAndUpdate(req.params.id, req.body, {new:true})
     .then(trip => res.json(trip))
     .catch(err => res.json(err))
 }
