@@ -7,7 +7,7 @@ import userService from "../../services/userService";
 import UserTripCard from "../../components/UserTripCard/UserTripCard";
 import "./UserPage.css";
 
-export default function UserPage() {
+export default function UserPage({handleGetTripDetails}) {
   const [user, setUser] = useState();
   const [trips, setTrips] = useState([]);
   const { id } = useParams();
@@ -42,8 +42,8 @@ export default function UserPage() {
         <UserTripCard 
           trip={trip} 
           handleDeleteTrip={handleDeleteTrip}
-          handleUpdateTrip={handleUpdateTrip}
-        />
+          handleGetTripDetails={handleGetTripDetails}
+          />
       ))}
     </div>
   ) : (

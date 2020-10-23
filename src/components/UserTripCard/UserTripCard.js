@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom'
 
 import "./UserTripCard.css";
 
-export default function UserTripCard({ trip, handleDeleteTrip }) {
+export default function UserTripCard({ trip, handleDeleteTrip, handleGetTripDetails }) {
+
+  
+
   return (
     <div className="ui cards">
       <div className="card">
@@ -15,7 +18,7 @@ export default function UserTripCard({ trip, handleDeleteTrip }) {
             {new Date(trip.start).toLocaleDateString()} - {new Date(trip.end).toLocaleDateString()}
           </div>
           <br/>
-          <Link to={`/edittrip/${trip._id}`} className="ui left blue button">Edit</Link>
+          <Link to={`/edittrip/${trip._id}`} onClick={() => handleGetTripDetails(trip)} className="ui left blue button">Edit</Link>
           <button className="ui right red button" onClick={() => handleDeleteTrip(trip._id)}>Delete</button>
         </div>
       </div>

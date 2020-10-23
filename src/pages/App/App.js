@@ -12,6 +12,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import UserPage from '../UserPage/UserPage';
 import StartTripPage from '../StartTripPage/StartTripPage';
 import LandingPage from '../LandingPage/LandingPage';
+import EditTripPage from '../EditTripPage/EditTripPage';
 
 import userService from "../../services/userService";
 import { getHotels, getRestaurants } from "../../services/google-api";
@@ -23,6 +24,7 @@ const App = ({history}) => {
   const [city, setCity] = useState("");
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
+  const [tripDetails, setTripDetails] = useState('');
 
   const handleSearchSubmit = async (query) => {
     setCity(query);
@@ -33,6 +35,10 @@ const App = ({history}) => {
     googleRestaurants.data.results.sort((a, b) => b.rating - a.rating);
     setRestaurants(googleRestaurants.data.results);
   };
+
+  const handleGetTripDetails = (trip) => {
+    setTripDetails(trip);
+  }
 
   const handleLogout = () => {
     userService.logout();
@@ -116,7 +122,7 @@ const App = ({history}) => {
           handleLogout={handleLogout}
           user={user}  
         >
-         <UserPage />
+         <UserPage handleGetTripDetails={handleGetTripDetails}/>
         </Layout>
       )}></Route>
 
@@ -126,6 +132,15 @@ const App = ({history}) => {
           user={user}  
         >
          <StartTripPage user={user} city={city}/>
+        </Layout>
+      )}></Route>
+
+      <Route exact path="/edittrip/:id" render={() => (
+        <Layout 
+          handleLogout={handleLogout}
+          user={user}  
+        >
+         <EditTripPage user={user} tripDetails={tripDetails}/>
         </Layout>
       )}></Route>
 
