@@ -3,7 +3,9 @@ const router = express.Router();
 
 const tripCtrl = require('../controllers/trips')
 
-router.get('/:id', tripCtrl.getUserTrips)
+router.get('/:id', tripCtrl.getTripDetails)
+
+router.get('/user/:id', tripCtrl.getUserTrips)
 
 router.use(require('../config/auth'));
 

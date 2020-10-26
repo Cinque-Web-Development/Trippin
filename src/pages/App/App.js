@@ -24,7 +24,6 @@ const App = ({history}) => {
   const [city, setCity] = useState("");
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
-  const [tripDetails, setTripDetails] = useState('');
 
   const handleSearchSubmit = async (query) => {
     setCity(query);
@@ -35,10 +34,6 @@ const App = ({history}) => {
     googleRestaurants.data.results.sort((a, b) => b.rating - a.rating);
     setRestaurants(googleRestaurants.data.results);
   };
-
-  const handleGetTripDetails = (trip) => {
-    setTripDetails(trip);
-  }
 
   const handleLogout = () => {
     userService.logout();
@@ -122,7 +117,7 @@ const App = ({history}) => {
           handleLogout={handleLogout}
           user={user}  
         >
-         <UserPage handleGetTripDetails={handleGetTripDetails}/>
+         <UserPage />
         </Layout>
       )}></Route>
 
@@ -131,7 +126,10 @@ const App = ({history}) => {
           handleLogout={handleLogout}
           user={user}  
         >
-         <StartTripPage user={user} city={city}/>
+         <StartTripPage 
+          user={user} 
+          city={city}
+         />
         </Layout>
       )}></Route>
 
@@ -140,7 +138,9 @@ const App = ({history}) => {
           handleLogout={handleLogout}
           user={user}  
         >
-         <EditTripPage user={user} tripDetails={tripDetails}/>
+         <EditTripPage 
+          user={user} 
+         />
         </Layout>
       )}></Route>
 

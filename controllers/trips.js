@@ -2,6 +2,7 @@ const Trip = require('../models/trip');
 
 module.exports = {
     getUserTrips,
+    getTripDetails,
     create,
     delete:deleteOne,
     update
@@ -13,21 +14,15 @@ function getUserTrips(req, res) {
     .catch(err => res.json(err))
 }
 
+function getTripDetails(req, res) {
+    Trip.findById(req.params.id)
+    .then(trip => res.json(trip))
+    .catch(err => res.json(err))
+}
+
 function create(req, res) {
-    Trip.create({
-        start: req.body.formData.start,
-        end: req.body.formData.end,
-        user: req.user._id
-    })
-    .then(trip => {
-        trip.destinations.push({location: req.body.formData.destination})
-        trip.save()
-        return trip
-    })
-    .then(trip => {
-        console.log(trip)
-        res.json(trip)
-    })
+    Trip.create(req.body)
+    .then(trip => res.json(trip))
     .catch(err => res.json(err))
 }
 
