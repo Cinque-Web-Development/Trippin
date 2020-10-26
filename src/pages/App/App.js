@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import AmenityList from "../../components/AmenityList/AmenityList";
 import AmenityDetails from '../../components/AmenityDetails/AmenityDetails';
@@ -19,11 +19,12 @@ import { getHotels, getRestaurants } from "../../services/google-api";
 
 import "./App.css";
 
-const App = ({history}) => {
+const App = () => {
   const [user, setUser] = useState();
   const [city, setCity] = useState("");
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
+  const history = useHistory()
 
   const handleSearchSubmit = async (query) => {
     setCity(query);
