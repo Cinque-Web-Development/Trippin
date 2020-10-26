@@ -7,9 +7,9 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       <nav className="nav-bar">
         <div className="nav-wrapper">
-        <Link to="/" id="brand-logo" className="left">
-          <img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img>
-          <h1 id="app-name">Trippin'</h1>
+          <Link to="/" id="brand-logo" className="left">
+            <img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img>
+            <h1 id="app-name">Trippin'</h1>
           </Link>
           <ul className="right">
             <li>
@@ -19,7 +19,7 @@ const NavBar = ({ user, handleLogout }) => {
               <Link to={`/user/${user._id}`}>{user.name}'s Trips</Link>
             </li>
             <li>
-              <a href=" " onClick={handleLogout}>Log Out</a>
+              <Link to="/" onClick={handleLogout}>Log Out</Link>
             </li>
           </ul>
         </div>
@@ -29,19 +29,19 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       <nav className="nav-bar">
         <div className="nav-wrapper">
-        <Link to="/" id="brand-logo" className="left">
-          <img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img>
-          <h1 id="app-name">Trippin'</h1>
+          <Link to="/" id="brand-logo" className="left">
+            <img className="trippin-logo" src="/images/trip-logo.png" alt="icon"></img>
+            <h1 id="app-name">Trippin'</h1>
           </Link>
           <ul className="right">
             <li>
-              <a href="/">Search Cities</a>
+              <Link to="/">Search Cities</Link>
             </li>
             <li>
-              <a href="/login">Log In</a>
+              <Link to="/login">Log In</Link>
             </li>
             <li>
-              <a href="/signup">Sign Up</a>
+              <Link to="/signup">Sign Up</Link>
             </li>
           </ul>
         </div>
