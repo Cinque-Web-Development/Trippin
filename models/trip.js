@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const destinationSchema = new mongoose.Schema({
     location: String,
-    attractions: {
+    attractions: [{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Attraction'
-    },
+    }],
 })
 
 const tripSchema = new mongoose.Schema({
