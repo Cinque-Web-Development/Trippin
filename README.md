@@ -16,7 +16,7 @@
 ## Instructions For Contributing to This Repo:
 #### 1.  Clone this repository to your local machine.
 ```
-git clone https://github.com/samueltrahan/Trippin.git
+git clone https://github.com/Cinque-Web-Development/Trippin.git
 ```
 #### 2.  Navigate into the repository and install node modules.
 ```
